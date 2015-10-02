@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  course_name: MyString
+  course_id: MyString
+  credits: 1
+  quarters: MyString
+  level: MyString
+  specializations: 
+  syllabus_url: MyString
+  evaluations_url: MyString
+  web_page: MyString
+
+two:
+  course_name: MyString
+  course_id: MyString
+  credits: 1
+  quarters: MyString
+  level: MyString
+  specializations: 
+  syllabus_url: MyString
+  evaluations_url: MyString
+  web_page: MyString

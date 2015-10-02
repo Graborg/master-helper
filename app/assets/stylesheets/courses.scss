@@ -1,0 +1,26 @@
+.course-btn{
+	font-size:12px !important;
+	padding: 8px 0px 8px 30px !important;
+}
+table {
+	table-layout: fixed;
+}
+#year-col{
+	width: 50px !important;
+}
+.container{
+	width: 100% !important;
+}
+.row{
+	width: 100% !important;
+	overflow: hidden;
+}
+.course-credits, .course-id, .course-name{
+	padding: 0 !important;
+}
+.course-id, .course-name{
+	text-align:left;
+}
+.course-credits{
+	text-align:right;
+}
