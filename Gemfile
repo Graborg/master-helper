@@ -27,7 +27,8 @@ gem 'react-rails', '~> 1.0'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'quiet_assets'
-
+gem 'rest-client'
+gem 'nokogiri', '~> 1.6.6.2'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

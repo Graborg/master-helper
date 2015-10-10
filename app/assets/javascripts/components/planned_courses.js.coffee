@@ -5,9 +5,6 @@
   getDefaultProps: ->
     plannedCourses: []
 
-  balance: ->
-    0
-
   addCourse: (course) ->
     plannedCourses = React.addons.update(@state.plannedCourses, { $push: [course] })
     @setState plannedCourses: plannedCourses
