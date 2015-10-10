@@ -1,7 +1,7 @@
 @SchoolYear = React.createClass
     isInRightQuarter: (quarterNo) ->
-      (course) ->
-          quarterNo.toString() in course.quarters
+        (course) ->
+            quarterNo.toString() in course.available_quarters
     yearRow: ->
         React.DOM.tr null,
             React.DOM.td null, @props.year + 3
@@ -10,6 +10,6 @@
                     # filter courses that has the right quarterNo
                     filtered = @props.courses.filter(@isInRightQuarter(quarterNo));
                     React.DOM.td null,
-                        React.createElement Quarter, key: quarterNo, courses: filtered, quarterNo:  quarterNo
+                        React.createElement Quarter, key: quarterNo, courses: filtered, quarterNo: quarterNo
     render: ->
         @yearRow()
