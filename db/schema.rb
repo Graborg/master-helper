@@ -11,15 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151001195845) do
+ActiveRecord::Schema.define(version: 20151018112859) do
 
   create_table "courses", force: :cascade do |t|
     t.string   "course_name"
-    t.string   "course_id"
+    t.string   "course_code"
     t.integer  "credits"
     t.string   "available_quarters"
     t.string   "level"
-    t.integer  "specializations_id"
     t.string   "syllabus_url"
     t.string   "evaluations_url"
     t.string   "web_page"
@@ -27,18 +26,31 @@ ActiveRecord::Schema.define(version: 20151001195845) do
     t.datetime "updated_at",         null: false
   end
 
-  create_table "records", force: :cascade do |t|
-    t.string   "title"
-    t.date     "date"
-    t.float    "amount"
+  create_table "selected_courses", force: :cascade do |t|
+    t.integer  "course_id"
+    t.integer  "user_id"
+    t.integer  "quarter"
+    t.integer  "year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "specializations", force: :cascade do |t|
-    t.string   "specialization"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+  add_index "selected_courses", ["course_id"], name: "index_selected_courses_on_course_id"
+  add_index "selected_courses", ["user_id"], name: "index_selected_courses_on_user_id"
+
+  create_table "specialisations", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "course_id"
+  end
+
+  add_index "specialisations", ["course_id"], name: "index_specialisations_on_course_id"
+
+  create_table "users", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
