@@ -1,3 +1,4 @@
 class Course < ActiveRecord::Base
-	has_and_belongs_to_many :specializations
+	has_many :specialisations
+	has_many :selected_courses
 end

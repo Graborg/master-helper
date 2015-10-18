@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  course_id: 
+  user_id: 
+  quarter: 1
+  year: 1
+
+two:
+  course_id: 
+  user_id: 
+  quarter: 1
+  year: 1

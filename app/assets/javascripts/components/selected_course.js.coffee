@@ -1,4 +1,4 @@
-@Course = React.createClass
+@SelectedCourse = React.createClass
     render: ->
          React.DOM.div
             className: 'test'

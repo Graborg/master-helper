@@ -1,38 +1,13 @@
 require 'rest-client'
 require 'nokogiri'
 BASE_URL = "http://kurser.lth.se/lot/?val=program&lang=en&prog="
-desc "Fetch courses from all the LTH-programmes at http://kurser.lth.se/ and add them to database"
+desc "Fetch courses from all the LTH-programmes at http://kurser.lth.se/ and add them to database, works atleast for C programme"
 task fetch_courses: :environment do
 	# Not included
 	# Maskinteknik - teknisk design,
 	programmes = ['B', 'D', 'W', 'E', 'I', 'C', 'K', 'L', 'M', 'BME', 'F', 'M', 'N', 'V']
-	raw_html = fetch_course_html('C')
-	html = Nokogiri.HTML(raw_html)
-	table_counter = 0
-	course_table = html.css('.CourseListView')[0]
-	# html.css('.CourseListView').each do |course_table|
-		table_name = html.css('h3')[table_counter].text
-		specialization = table_name.split('-')[1].strip if table_name.start_with?('Specialisation')# If it's a specializtion, retreive the spec name
-		mandatory = table_name.include?('Mandatory')
-
-		columns = get_columns(course_table.css('thead'))
-		columns |= ['mandatory'] #If the table haven't got the column mandatory, we add it and set it to 'true'
-
-		# Retrieve 'courses' as an array of (course data)arrays [["ETT051", "7.5"...], ["EITF05", "4"...]]
-		courses = get_courses(course_table.css('tbody'))
-		zipped = []
-		courses.each do |course|
-			course =  Hash[columns.zip(course)]
-			course['mandatory'] = mandatory || course['mandatory'] == 'O'
-			course['specialization'] = specialization
-			zipped << course
-		end
-		zipped.each do |course|
-			puts course
-			puts
-		end
-	table_counter += 1
-	# end
+	courses = produce_course_hashes
+	add_courses_to_database(courses)
 end
 def fetch_course_html(course_letter)
 	return RestClient.get BASE_URL + course_letter
@@ -70,4 +45,39 @@ def get_courses(table_body)
 		courses << course_data
 	end
 	courses
+end
+# Return array of course hashes
+# Ex
+# [{"quarters"=>"3", "course_code"=>"PHYM01", "credits"=>"30", "course_name"=>"Degree Project in Physics", "links"=>"KS KE U W ", "mandatory"=>false, "specialization"=>nil}]
+def produce_course_hashes
+	raw_html = fetch_course_html('C')
+	html = Nokogiri.HTML(raw_html)
+	table_counter = 0
+	course_table = html.css('.CourseListView')[0]
+	html.css('.CourseListView').each do |course_table|
+		table_name = html.css('h3')[table_counter].text
+		specialization = table_name.split('-')[1].strip if table_name.start_with?('Specialisation')# If it's a specializtion, retreive the spec name
+		mandatory = table_name.include?('Mandatory')
+
+		columns = get_columns(course_table.css('thead'))
+		columns |= ['mandatory'] #If the table haven't got the column mandatory, we add it and set it to 'true'
+
+		# Retrieve 'courses' as an array of (course data)arrays [["ETT051", "7.5"...], ["EITF05", "4"...]]
+		courses = get_courses(course_table.css('tbody'))
+		zipped = []
+		courses.each do |course|
+			course =  Hash[columns.zip(course)]
+			course['mandatory'] = mandatory || course['mandatory'] == 'O'
+			course['specialization'] = specialization
+			zipped << course
+		end
+		table_counter += 1
+	end
+end
+
+def add_courses_to_database(courses)
+	#CHANGE NAME specializations in DB!!
+	Specialisation.create()
+	Course.create(courses)
+
 end
