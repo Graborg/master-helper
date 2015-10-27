@@ -44,3 +44,7 @@
             React.DOM.tbody null,
                 React.createElement SchoolYear, key: 1, courses: @state.plannedCourses, year: 1
                 React.createElement SchoolYear, key: 2, courses: @state.plannedCourses, year: 2
+        React.DOM.div
+            className: 'container course-credits'
+            React.createElement CourseList
+            React.createElement CreditsBox
