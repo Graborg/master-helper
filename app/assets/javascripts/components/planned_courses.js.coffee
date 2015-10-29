@@ -26,6 +26,8 @@
     for key of course
         plannedCourse[key] = course[key]
     plannedCourse.id = plannedCourse.id * 10000
+    plannedCourse.selectedQuarter = plannedCourse.available_quarters[0]
+    plannedCourse.selectedYear = 4
     plannedCourses = React.addons.update(@state.plannedCourses, { $push: [plannedCourse] })
     courses = React.addons.update(@state.courses, { $splice: [[index, 1]] })
     @setState plannedCourses: plannedCourses
@@ -58,8 +60,8 @@
                 React.DOM.th null, 'LP3'
                 React.DOM.th null, 'LP4'
             React.DOM.tbody null,
-                React.createElement SchoolYear, key: 1, plannedCourses: @state.plannedCourses, year: 1
-                React.createElement SchoolYear, key: 2, plannedCourses: @state.plannedCourses, year: 2
+                React.createElement SchoolYear, key: 1, plannedCourses: @state.plannedCourses, year: 4
+                React.createElement SchoolYear, key: 2, plannedCourses: @state.plannedCourses, year: 5
         React.DOM.div
             className: 'container course-credits'
             React.createElement CourseList, courses: @state.courses, handleAddCourse: @addCourse
