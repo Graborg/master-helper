@@ -24,7 +24,7 @@
                 React.DOM.div
                     className: 'col-md-12 col-lg-12 col-xs-12 col-sm-12'
                     React.createElement ReactBootstrap.ProgressBar,
-                        now: @props.credits.spec / 45
+                        now: @props.credits.spec / 45 * 100
             React.DOM.div
                 className: 'row'
                 React.DOM.div
@@ -40,7 +40,7 @@
                 React.DOM.div
                     className: 'col-md-12 col-lg-12 col-xs-12 col-sm-12'
                     React.createElement ReactBootstrap.ProgressBar,
-                        now: @props.credits.adv / 75
+                        now: @props.credits.adv / 75 * 100
             React.DOM.div
                 className: 'row'
                 React.DOM.div
@@ -56,7 +56,7 @@
                 React.DOM.div
                     className: 'col-md-12 col-lg-12 col-xs-12 col-sm-12'
                     React.createElement ReactBootstrap.ProgressBar,
-                        now: @props.credits.advSpec / 30
+                        now: @props.credits.advSpec / 30 * 100
             React.DOM.div
                 id:"total-row"
                 className: 'row'
@@ -73,6 +73,6 @@
                 React.DOM.div
                     className: 'col-md-12 col-lg-12 col-xs-12 col-sm-12'
                     React.createElement ReactBootstrap.ProgressBar,
-                        now: @props.credits.total / 120
+                        now: @props.credits.total / 120 * 100
 
 
