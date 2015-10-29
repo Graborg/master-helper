@@ -1,9 +1,11 @@
 @PlannedCourses = React.createClass
   getInitialState: ->
     plannedCourses: @props.data
+    credits: {spec: 0, adv: 0, advSpec: 0, total: 0}
 
   getDefaultProps: ->
     plannedCourses: []
+    credits: {spec: 0, adv: 0, advSpec: 0, total: 0}
 
   addCourse: (course) ->
     plannedCourses = React.addons.update(@state.plannedCourses, { $push: [course] })
@@ -45,4 +47,4 @@
         React.DOM.div
             className: 'container course-credits'
             React.createElement CourseList, courses: @state.plannedCourses
-            React.createElement CreditsBox
+            React.createElement CreditsBox, credits: @state.credits

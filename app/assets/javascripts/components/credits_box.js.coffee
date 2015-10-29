@@ -18,13 +18,13 @@
                         "Specialisation"
                     React.DOM.span
                         className: "pull-right"
-                        "5/45 hp"
+                        "#{@props.credits.spec}/45 hp"
             React.DOM.div
                 className: 'row'
                 React.DOM.div
                     className: 'col-md-12 col-lg-12 col-xs-12 col-sm-12'
                     React.createElement ReactBootstrap.ProgressBar,
-                        now:20
+                        now: @props.credits.spec / 45
             React.DOM.div
                 className: 'row'
                 React.DOM.div
@@ -34,13 +34,13 @@
                         "Advanced"
                     React.DOM.span
                         className: "pull-right"
-                        "5/75 hp"
+                        "#{@props.credits.adv}/75 hp"
             React.DOM.div
                 className: 'row'
                 React.DOM.div
                     className: 'col-md-12 col-lg-12 col-xs-12 col-sm-12'
                     React.createElement ReactBootstrap.ProgressBar,
-                        now:20
+                        now: @props.credits.adv / 75
             React.DOM.div
                 className: 'row'
                 React.DOM.div
@@ -50,13 +50,13 @@
                         "Advanced in specialisation"
                     React.DOM.span
                         className: "pull-right"
-                        "5/30 hp"
+                        "#{@props.credits.advSpec}/30 hp"
             React.DOM.div
                 className: 'row'
                 React.DOM.div
                     className: 'col-md-12 col-lg-12 col-xs-12 col-sm-12'
                     React.createElement ReactBootstrap.ProgressBar,
-                        now:20
+                        now: @props.credits.advSpec / 30
             React.DOM.div
                 id:"total-row"
                 className: 'row'
@@ -67,12 +67,12 @@
                         "Total"
                     React.DOM.span
                         className: "pull-right"
-                        "5/120 hp"
+                        "#{@props.credits.total}/120 hp"
             React.DOM.div
                 className: 'row'
                 React.DOM.div
                     className: 'col-md-12 col-lg-12 col-xs-12 col-sm-12'
                     React.createElement ReactBootstrap.ProgressBar,
-                        now:5
+                        now: @props.credits.total / 120
 
 

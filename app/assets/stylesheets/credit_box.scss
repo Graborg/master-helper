@@ -8,3 +8,6 @@ div#total-row{
 	margin-left: 0px !important;
 	margin-right: 0px !important;
 }
+.progress-bar[aria-valuenow="0"]{
+	min-width: 0px !important;
+}
