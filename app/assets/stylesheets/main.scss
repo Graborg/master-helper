@@ -1,3 +1,10 @@
+tr{
+	text-align: left;
+}
+span.glyphicon-plus-sign {
+	font-size: 1.5em;
+	cursor: pointer ;
+}
 .course-list {
 	margin-left: 0px !important;
 	padding: 0px 15px 0px 0px !important;
@@ -8,4 +15,32 @@
 }
 .panel-heading{
 	text-align: left;
+}
+
+.courselist-buttons{
+	margin:0 !important;
+}
+.courselist-buttons button, .courselist-buttons .btn-group {
+	overflow: hidden;
+	width: 100% !important;
+}
+
+div.courselist-buttons > div {
+	padding-left: 0px !important;
+}
+.dropdown-menu *{
+	overflow: visible !important;
+}
+.open{
+	overflow: visible !important;
+}
+.search-field{
+	margin-top: 5px;
+	padding-right: 0 !important;
+}
+.courselist-container{
+	padding: 0px !important;
+}
+input, select, textarea{
+    color: #FFF !important;
 }
