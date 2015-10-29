@@ -8,8 +8,8 @@
                 for quarterNo in [1..4]
                     # Each quarter is a column i.e a table cell.
                     # filter courses that has the right quarterNo
-                    filtered = @props.courses.filter(@isInRightQuarter(quarterNo));
-                    React.DOM.td null,
+                    filtered = @props.plannedCourses.filter(@isInRightQuarter(quarterNo));
+                    React.DOM.td key: quarterNo,
                         React.createElement Quarter, key: quarterNo, courses: filtered, quarterNo: quarterNo
     render: ->
         @yearRow()
