@@ -8,7 +8,7 @@
     if match then "success" else "default"
 @CourseListRow = React.createClass
     handleAdd: ->
-        console.log(@props.course)
+        @props.handleAddCourse(@props.course)
     render: ->
         React.DOM.a
             className: "add"
