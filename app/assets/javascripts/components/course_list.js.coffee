@@ -10,6 +10,6 @@
                     React.createElement CourseListHeader
                 React.DOM.div
                     className: 'panel-body'
-                    React.createElement CourseListTable
+                    React.createElement CourseListTable, courses: @props.courses
 
 

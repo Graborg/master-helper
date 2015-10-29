@@ -29,8 +29,6 @@
             'Planned Courses'
           React.DOM.div
             className: 'row'
-            # React.createElement CreditBox, type: 'success', amount: 5, text: 'Credits'
-          # React.createElement RecordForm, handleNewRecord: @addRecord
           React.DOM.hr null
           React.DOM.table
             className: 'table table-bordered'
@@ -42,9 +40,9 @@
                 React.DOM.th null, 'LP3'
                 React.DOM.th null, 'LP4'
             React.DOM.tbody null,
-                React.createElement SchoolYear, key: 1, courses: @state.plannedCourses, year: 1
-                React.createElement SchoolYear, key: 2, courses: @state.plannedCourses, year: 2
+                React.createElement SchoolYear, key: 1, courses: [], year: 1
+                React.createElement SchoolYear, key: 2, courses: [], year: 2
         React.DOM.div
             className: 'container course-credits'
-            React.createElement CourseList
+            React.createElement CourseList, courses: @state.plannedCourses
             React.createElement CreditsBox
