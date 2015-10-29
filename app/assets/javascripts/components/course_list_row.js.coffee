@@ -14,9 +14,19 @@
             className: "add"
             onClick: @handleAdd
             React.DOM.tr null,
-                React.DOM.td colSpan:"2", @props.course.course_name
-                React.DOM.td null, @props.course.course_code
-                React.DOM.td null, @props.course.credits + " hp/" + @props.course.level + "/" + getSpec(@props.course)
+                React.DOM.td colSpan:"2",
+                    React.DOM.span className:"label label-success",
+                        @props.course.course_name
+                React.DOM.td null,
+                    React.DOM.span className: "label label-success",
+                        @props.course.course_code
+                React.DOM.td null,
+                    React.DOM.span className: "badge",
+                        @props.course.credits + " hp"
+                    React.DOM.span className: "badge",
+                        @props.course.level
+                    React.DOM.span className: "badge",
+                        getSpec(@props.course)
                 React.DOM.td className: "quarters",
                     React.DOM.span
                         className:"label label-#{showQuarters(@props.course, 1)}"
