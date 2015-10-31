@@ -19,6 +19,7 @@
         creditsHash.advSpec += course.credits
     creditsHash.total += course.credits
     @setState credits: creditsHash
+
   addCourse: (course) ->
     index = @state.courses.indexOf course
     @addCredits(course)
@@ -33,6 +34,17 @@
     @setState plannedCourses: plannedCourses
     @setState courses: courses
 
+  changeQuarter: (course) ->
+    qIndex = (course.available_quarters.indexOf course.selectedQuarter) + 1
+    courseIndex = @state.plannedCourses.indexOf course
+    plannedCourses = @state.plannedCourses
+    if ! course.available_quarters[qIndex]?
+        qIndex = 0
+        newYear = if course.selectedYear == 5 then 4 else 5
+        course.selectedYear = newYear
+    course.selectedQuarter = course.available_quarters[qIndex]
+    plannedCourses[courseIndex] = course
+    @setState plannedCourses: plannedCourses
 
   updateCourse: (course, data) ->
     index = @state.courses.indexOf course
@@ -59,9 +71,9 @@
                 React.DOM.th null, 'LP2'
                 React.DOM.th null, 'LP3'
                 React.DOM.th null, 'LP4'
-            React.DOM.tbody null,
-                React.createElement SchoolYear, key: 1, plannedCourses: @state.plannedCourses, year: 4
-                React.createElement SchoolYear, key: 2, plannedCourses: @state.plannedCourses, year: 5
+            React.DOM.tbody id: "selectedCourses",
+                React.createElement SchoolYear, key: 1, plannedCourses: @state.plannedCourses, year: 4, handleChangeQuarter: @changeQuarter
+                React.createElement SchoolYear, key: 2, plannedCourses: @state.plannedCourses, year: 5, handleChangeQuarter: @changeQuarter
         React.DOM.div
             className: 'container course-credits'
             React.createElement CourseList, courses: @state.courses, handleAddCourse: @addCourse
