@@ -55,26 +55,20 @@
     React.DOM.div
         className: 'well'
         React.DOM.div
-          className: 'planned-courses'
-          React.DOM.h2
-            className: 'title'
-            'Planned Courses'
-          React.DOM.div
             className: 'row'
-          React.DOM.hr null
-          React.DOM.table
-            className: 'table table-bordered'
-            React.DOM.thead null,
-              React.DOM.tr null,
-                React.DOM.th id: 'year-col', 'Year'
-                React.DOM.th null, 'LP1'
-                React.DOM.th null, 'LP2'
-                React.DOM.th null, 'LP3'
-                React.DOM.th null, 'LP4'
-            React.DOM.tbody id: "selectedCourses",
-                React.createElement SchoolYear, key: 1, plannedCourses: @state.plannedCourses, year: 4, handleChangeQuarter: @changeQuarter
-                React.createElement SchoolYear, key: 2, plannedCourses: @state.plannedCourses, year: 5, handleChangeQuarter: @changeQuarter
-        React.DOM.div
-            className: 'container course-credits'
+            React.DOM.table
+                className: 'table table-bordered'
+                React.DOM.thead null,
+                  React.DOM.tr null,
+                    React.DOM.th id: 'year-col', 'Year'
+                    React.DOM.th null, 'LP1'
+                    React.DOM.th null, 'LP2'
+                    React.DOM.th null, 'LP3'
+                    React.DOM.th null, 'LP4'
+                React.DOM.tbody id: "selectedCourses",
+                    React.createElement SchoolYear, key: 1, plannedCourses: @state.plannedCourses, year: 4, handleChangeQuarter: @changeQuarter
+                    React.createElement SchoolYear, key: 2, plannedCourses: @state.plannedCourses, year: 5, handleChangeQuarter: @changeQuarter
+            React.DOM.div
+                className: 'container course-credits'
             React.createElement CourseList, courses: @state.courses, handleAddCourse: @addCourse
             React.createElement CreditsBox, credits: @state.credits
