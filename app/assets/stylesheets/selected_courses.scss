@@ -3,10 +3,23 @@
 }
 tbody#selectedCourses td{
 	padding: 0px !important;
-	height:51px;
+	text-align: center;
+	vertical-align: middle;
 }
 tbody#selectedCourses button{
 	margin: 0px;
 	width:100%;
-	height:100%;
+	padding: 8px 8px 8px 8px;
+}
+tbody#selectedCourses button .row{
+	margin: 0px;
+}
+th#year-col{
+	width: 37px !important;
+	text-align: center;
+	vertical-align: middle;
+	padding: 0px;
+}
+.quarter{
+	height:114px;
 }

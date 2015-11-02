@@ -7,7 +7,7 @@
                 className: 'row'
                 React.DOM.div
                     className: 'course-id col-md-6 col-sm-6 col-xs-6'
-                    "#{@props.course.course_id}"
+                    "#{@props.course.course_code}"
                 React.DOM.div
                     className: 'course-credits col-md-6 col-sm-6 col-xs-6'
                     "#{@props.course.credits} hp"
