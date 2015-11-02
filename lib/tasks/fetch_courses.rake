@@ -14,7 +14,7 @@ def fetch_course_html(course_letter)
 end
 def get_columns(table_header)
 	columns = []
-	columns << 'quarters'
+	columns << 'available_quarters'
 	table_header.css('th').each do |header|
 		column = header.css('strong')[0]
 		column ||= header
@@ -48,15 +48,16 @@ def get_courses(table_body)
 end
 # Return array of course hashes
 # Ex
-# [{"quarters"=>"3", "course_code"=>"PHYM01", "credits"=>"30", "course_name"=>"Degree Project in Physics", "links"=>"KS KE U W ", "mandatory"=>false, "specialization"=>nil}]
+# [{"quarters"=>"3", "course_code"=>"PHYM01", "credits"=>"30", "course_name"=>"Degree Project in Physics", "links"=>"KS KE U W ", "mandatory"=>false, "specialisation"=>nil}]
 def produce_course_hashes
 	raw_html = fetch_course_html('C')
 	html = Nokogiri.HTML(raw_html)
 	table_counter = 0
 	course_table = html.css('.CourseListView')[0]
+	zipped = []
 	html.css('.CourseListView').each do |course_table|
 		table_name = html.css('h3')[table_counter].text
-		specialization = table_name.split('-')[1].strip if table_name.start_with?('Specialisation')# If it's a specializtion, retreive the spec name
+		specialisation = table_name.split('-')[1].strip if table_name.start_with?('Specialisation')# If it's a specializtion, retreive the spec name
 		mandatory = table_name.include?('Mandatory')
 
 		columns = get_columns(course_table.css('thead'))
@@ -64,20 +65,24 @@ def produce_course_hashes
 
 		# Retrieve 'courses' as an array of (course data)arrays [["ETT051", "7.5"...], ["EITF05", "4"...]]
 		courses = get_courses(course_table.css('tbody'))
-		zipped = []
 		courses.each do |course|
 			course =  Hash[columns.zip(course)]
 			course['mandatory'] = mandatory || course['mandatory'] == 'O'
-			course['specialization'] = specialization
+			course['specialisation'] = specialisation
 			zipped << course
 		end
 		table_counter += 1
 	end
+	zipped
 end
 
 def add_courses_to_database(courses)
-	#CHANGE NAME specializations in DB!!
-	Specialisation.create()
-	Course.create(courses)
+	# Specialisation.create()
+	courses.each do |course|
+		columns = ["course_name", "course_code", "credits", "available_quarters", "level"]
+		course = course.keep_if {|k,_| columns.include? k }
+		puts course.to_s
+		Course.create(course)
+	end
 
 end
