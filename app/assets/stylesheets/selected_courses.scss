@@ -4,7 +4,6 @@
 tbody#selectedCourses td{
 	padding: 0px !important;
 	text-align: center;
-	vertical-align: middle;
 }
 tbody#selectedCourses button{
 	margin: 0px;
@@ -13,6 +12,10 @@ tbody#selectedCourses button{
 }
 tbody#selectedCourses button .row{
 	margin: 0px;
+	font-size:12px;
+}
+tbody#selectedCourses tr td:first-child {
+	vertical-align: middle;
 }
 th#year-col{
 	width: 37px !important;
@@ -21,5 +24,7 @@ th#year-col{
 	padding: 0px;
 }
 .quarter{
-	height:114px;
+	min-height:114px;
+}
+.course-name{
 }
