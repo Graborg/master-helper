@@ -15,10 +15,7 @@
                             'Bookss'
                 React.DOM.div
                     className: "col-lg-3 col-md-3 col-sm-3 col-xs-3"
-                    React.createElement ReactBootstrap.Button,
-                        bsStyle: "info"
-                        bsSize: "small"
-                        "Advanced"
+                    React.addons.createFragment(React.createElement AdvancedSwitch, handleAdvancedSwitch: @props.handleAdvancedSwitch)
                 React.DOM.div
                     className: "col-lg-3 col-md-3 col-sm-3 col-xs-3"
                     React.createElement ReactBootstrap.DropdownButton,
@@ -32,3 +29,13 @@
                     className: "search-field col-lg-3 col-md-3 col-sm-2 col-xs-2"
                     React.createElement Search
 
+@AdvancedSwitch = React.createClass
+    handleAdvancedSwitch: ->
+        console.log "hopp"
+        # @props.handleAdvancedSwitch
+    render: ->
+        React.createElement ReactBootstrap.Button,
+            bsStyle: "info"
+            bsSize: "small"
+            "Advanced"
+            onClick: @handleAdvancedSwitch

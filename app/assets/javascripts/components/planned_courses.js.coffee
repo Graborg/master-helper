@@ -3,11 +3,14 @@
     courses: @props.data
     plannedCourses: []
     credits: {spec: 0, adv: 0, advSpec: 0, total: 0}
-
+    advanced: false
   getDefaultProps: ->
     courses: []
     plannedCourses: []
     credits: {spec: 0, adv: 0, advSpec: 0, total: 0}
+  AdvancedSwitch: ->
+    console.log "geh"
+    @changeState advanced: !@state.advanced
 
   addCredits: (course) ->
     creditsHash = @state.credits
@@ -70,5 +73,5 @@
                     React.createElement SchoolYear, key: 2, plannedCourses: @state.plannedCourses, year: 5, handleChangeQuarter: @changeQuarter
             React.DOM.div
                 className: 'container course-credits'
-            React.createElement CourseList, courses: @state.courses, handleAddCourse: @addCourse
+            React.createElement CourseList, courses: @state.courses, handleAddCourse: @addCourse, handleAdvancedSwitch: @AdvancedSwitch
             React.createElement CreditsBox, credits: @state.credits
