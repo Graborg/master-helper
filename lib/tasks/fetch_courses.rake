@@ -10,7 +10,7 @@ task fetch_courses: :environment do
 	add_courses_to_database(courses)
 end
 def fetch_course_html(course_letter)
-	return RestClient.get BASE_URL + course_letter
+	RestClient.get BASE_URL + course_letter
 end
 def get_columns(table_header)
 	columns = []
@@ -50,19 +50,18 @@ end
 # Ex
 # [{"quarters"=>"3", "course_code"=>"PHYM01", "credits"=>"30", "course_name"=>"Degree Project in Physics", "links"=>"KS KE U W ", "mandatory"=>false, "specialisation"=>nil}]
 def produce_course_hashes
-	raw_html = fetch_course_html('C')
+	raw_html = File.read("/home/mikael/Downloads/coursesC.html")
+	# raw_html = fetch_course_html('C')
 	html = Nokogiri.HTML(raw_html)
 	table_counter = 0
 	course_table = html.css('.CourseListView')[0]
 	zipped = []
 	html.css('.CourseListView').each do |course_table|
 		table_name = html.css('h3')[table_counter].text
-		specialisation = table_name.split('-')[1].strip if table_name.start_with?('Specialisation')# If it's a specializtion, retreive the spec name
+		specialisation = table_name.split('-')[1].strip if table_name.start_with?('Specialisation')# If it's a specialisation, retreive the spec name
 		mandatory = table_name.include?('Mandatory')
-
 		columns = get_columns(course_table.css('thead'))
-		columns |= ['mandatory'] #If the table haven't got the column mandatory, we add it and set it to 'true'
-
+		columns |= ['mandatory'] #If the table haven't got the column mandatory, we add it
 		# Retrieve 'courses' as an array of (course data)arrays [["ETT051", "7.5"...], ["EITF05", "4"...]]
 		courses = get_courses(course_table.css('tbody'))
 		courses.each do |course|
@@ -77,11 +76,10 @@ def produce_course_hashes
 end
 
 def add_courses_to_database(courses)
-	# Specialisation.create()
 	courses.each do |course|
-		columns = ["course_name", "course_code", "credits", "available_quarters", "level"]
+		columns = ["course_name", "course_code", "credits", "available_quarters", "level", "mandatory"]
+		# course_spec = Specialisation.find_or_create_by(name: course['specialisation'])
 		course = course.keep_if {|k,_| columns.include? k }
-		puts course.to_s
 		Course.create(course)
 	end
 
