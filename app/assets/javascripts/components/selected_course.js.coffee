@@ -3,7 +3,7 @@
         React.createElement ReactBootstrap.Button,
             onClick: @props.handleChangeQuarter.bind(this, @props.course)
             bsStyle: "primary"
-            className: "quarters-#{@props.course.available_quarters.length}"
+            className: "quarters-#{@props.course.quarters.length}"
             React.DOM.div
                 className: 'row'
                 React.DOM.div

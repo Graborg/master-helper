@@ -11,19 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151109185331) do
+ActiveRecord::Schema.define(version: 20151109194508) do
 
   create_table "courses", force: :cascade do |t|
     t.string   "course_name"
     t.string   "course_code"
     t.float    "credits"
-    t.string   "available_quarters"
+    t.string   "quarters"
     t.string   "level"
     t.string   "syllabus_url"
     t.string   "evaluations_url"
     t.string   "web_page"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.string   "specialisation"
     t.boolean  "mandatory"
   end

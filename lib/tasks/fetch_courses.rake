@@ -14,7 +14,7 @@ def fetch_course_html(course_letter)
 end
 def get_columns(table_header)
 	columns = []
-	columns << 'available_quarters'
+	columns << 'quarters'
 	table_header.css('th').each do |header|
 		column = header.css('strong')[0]
 		column ||= header
@@ -77,7 +77,7 @@ end
 
 def add_courses_to_database(courses)
 	courses.each do |course|
-		columns = ["course_name", "course_code", "credits", "available_quarters", "level", "mandatory"]
+		columns = ["course_name", "course_code", "credits", "quarters", "level", "mandatory"]
 		# course_spec = Specialisation.find_or_create_by(name: course['specialisation'])
 		course = course.keep_if {|k,_| columns.include? k }
 		Course.create(course)
