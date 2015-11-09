@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151018112859) do
+ActiveRecord::Schema.define(version: 20151109185331) do
 
   create_table "courses", force: :cascade do |t|
     t.string   "course_name"
     t.string   "course_code"
-    t.integer  "credits"
+    t.float    "credits"
     t.string   "available_quarters"
     t.string   "level"
     t.string   "syllabus_url"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20151018112859) do
     t.string   "web_page"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.string   "specialisation"
+    t.boolean  "mandatory"
   end
 
   create_table "selected_courses", force: :cascade do |t|
