@@ -2,7 +2,7 @@
     isInRightQuarterAndYear: (quarterNo, year) ->
         (course) ->
             quarterNo.toString() in course.selectedQuarter and year == course.selectedYear
-    yearRow: ->
+    render: ->
         React.DOM.tr null,
             React.DOM.td null, @props.year
                 for quarterNo in [1..4]
@@ -11,5 +11,3 @@
                     filtered = @props.plannedCourses.filter(@isInRightQuarterAndYear(quarterNo, @props.year));
                     React.DOM.td key: quarterNo,
                         React.createElement Quarter, key: quarterNo, courses: filtered, quarterNo: quarterNo, handleChangeQuarter: @props.handleChangeQuarter
-    render: ->
-        @yearRow()
