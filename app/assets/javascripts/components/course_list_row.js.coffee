@@ -4,7 +4,7 @@
     else
         'None'
 @showQuarters = (course, quarter) ->
-    match = (new RegExp(quarter)).test(course.available_quarters)
+    match = (new RegExp(quarter)).test(course.quarters)
     if match then "success" else "default"
 @CourseListRow = React.createClass
     handleAdd: ->

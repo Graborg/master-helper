@@ -11,7 +11,8 @@
   AdvancedSwitch: ->
     console.log "geh"
     @changeState advanced: !@state.advanced
-
+  search: (searchString)->
+    console.log searchString
   addCredits: (course) ->
     creditsHash = @state.credits
     if course.specialisation
@@ -30,7 +31,7 @@
     for key of course
         plannedCourse[key] = course[key]
     plannedCourse.id = plannedCourse.id * 10000
-    plannedCourse.selectedQuarter = plannedCourse.available_quarters[0]
+    plannedCourse.selectedQuarter = plannedCourse.quarters[0]
     plannedCourse.selectedYear = 4
     plannedCourses = React.addons.update(@state.plannedCourses, { $push: [plannedCourse] })
     courses = React.addons.update(@state.courses, { $splice: [[index, 1]] })
@@ -38,14 +39,14 @@
     @setState courses: courses
 
   changeQuarter: (course) ->
-    qIndex = (course.available_quarters.indexOf course.selectedQuarter) + 1
+    qIndex = (course.quarters.indexOf course.selectedQuarter) + 1
     courseIndex = @state.plannedCourses.indexOf course
     plannedCourses = @state.plannedCourses
-    if ! course.available_quarters[qIndex]?
+    if ! course.quarters[qIndex]?
         qIndex = 0
         newYear = if course.selectedYear == 5 then 4 else 5
         course.selectedYear = newYear
-    course.selectedQuarter = course.available_quarters[qIndex]
+    course.selectedQuarter = course.quarters[qIndex]
     plannedCourses[courseIndex] = course
     @setState plannedCourses: plannedCourses
 
@@ -73,5 +74,5 @@
                     React.createElement SchoolYear, key: 2, plannedCourses: @state.plannedCourses, year: 5, handleChangeQuarter: @changeQuarter
             React.DOM.div
                 className: 'container course-credits'
-            React.createElement CourseList, courses: @state.courses, handleAddCourse: @addCourse, handleAdvancedSwitch: @AdvancedSwitch
+            React.createElement CourseList, courses: @state.courses, handleAddCourse: @addCourse, handleAdvancedSwitch: @AdvancedSwitch, handleSearch: @search
             React.createElement CreditsBox, credits: @state.credits
