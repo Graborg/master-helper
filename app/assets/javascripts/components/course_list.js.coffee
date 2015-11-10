@@ -7,7 +7,7 @@
                 React.DOM.div
                     className: "panel-heading"
                     'Courses'
-                    React.createElement CourseListHeader, handleAdvancedSwitch: @props.handleAdvancedSwitch
+                    React.createElement CourseListHeader, handleAdvancedSwitch: @props.handleAdvancedSwitch, handleSearch: @props.handleSearch
                 React.DOM.div
                     className: 'panel-body'
                     React.createElement CourseListTable, courses: @props.courses, handleAddCourse: @props.handleAddCourse

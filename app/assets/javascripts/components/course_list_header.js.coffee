@@ -1,4 +1,6 @@
 @CourseListHeader = React.createClass
+    search: (string)->
+        console.log string
     render: ->
         React.DOM.div
             className: "courselist-container container"
@@ -27,7 +29,7 @@
                             'Bookss'
                 React.DOM.div
                     className: "search-field col-lg-3 col-md-3 col-sm-2 col-xs-2"
-                    React.createElement Search
+                    React.createElement Search, handleSearch: @search
 
 @AdvancedSwitch = React.createClass
     handleAdvancedSwitch: ->
