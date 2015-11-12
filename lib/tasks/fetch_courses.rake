@@ -50,8 +50,8 @@ end
 # Ex
 # [{"quarters"=>"3", "course_code"=>"PHYM01", "credits"=>"30", "course_name"=>"Degree Project in Physics", "links"=>"KS KE U W ", "mandatory"=>false, "specialisation"=>nil}]
 def produce_course_hashes
-	raw_html = File.read("/home/mikael/Downloads/coursesC.html")
-	# raw_html = fetch_course_html('C')
+	# raw_html = File.read("/home/mikael/Downloads/coursesC.html")
+	raw_html = fetch_course_html('C')
 	html = Nokogiri.HTML(raw_html)
 	table_counter = 0
 	course_table = html.css('.CourseListView')[0]
