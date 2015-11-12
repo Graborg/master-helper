@@ -14,7 +14,7 @@
                         title: "Specialisation"
                         React.createElement ReactBootstrap.MenuItem,
                             title:'Books'
-                            'Bookss'
+                            'Security'
                 React.DOM.div
                     className: "col-lg-3 col-md-3 col-sm-3 col-xs-3"
                     React.addons.createFragment(React.createElement AdvancedSwitch, handleAdvancedSwitch: @props.handleAdvancedSwitch)
@@ -26,7 +26,7 @@
                         title: "Quarter"
                         React.createElement ReactBootstrap.MenuItem,
                             title:'Books'
-                            'Bookss'
+                            'Q1'
                 React.DOM.div
                     className: "search-field col-lg-3 col-md-3 col-sm-2 col-xs-2"
                     React.createElement Search, handleSearch: @search

@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
     def index
-      @planned_courses = Course.all
+      @planned_courses = Course.where("id == 3 OR id == 4")
     end
 
     def create
