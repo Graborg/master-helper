@@ -39,14 +39,14 @@
     @setState courses: courses
 
   changeQuarter: (course) ->
-    qIndex = (course.quarters.indexOf course.selectedQuarter) + 1
+    qIndex = (course.available_quarters.indexOf course.selectedQuarter) + 1
     courseIndex = @state.plannedCourses.indexOf course
     plannedCourses = @state.plannedCourses
-    if ! course.quarters[qIndex]?
+    if ! course.available_quarters[qIndex]?
         qIndex = 0
         newYear = if course.selectedYear == 5 then 4 else 5
         course.selectedYear = newYear
-    course.selectedQuarter = course.quarters[qIndex]
+    course.selectedQuarter = course.available_quarters[qIndex]
     plannedCourses[courseIndex] = course
     @setState plannedCourses: plannedCourses
 
