@@ -10,4 +10,4 @@
                     # filter courses that has the right quarterNo
                     filtered = @props.plannedCourses.filter(@isInRightQuarterAndYear(quarterNo, @props.year));
                     React.DOM.td key: quarterNo,
-                        React.createElement Quarter, key: quarterNo, courses: filtered, quarterNo: quarterNo, handleChangeQuarter: @props.handleChangeQuarter
+                        React.createElement Quarter, key: quarterNo, courses: filtered, quarterNo: quarterNo, handleChangeQuarter: @props.handleChangeQuarter, handleRemoveCourse: @props.handleRemoveCourse

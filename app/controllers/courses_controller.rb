@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
     def index
-      @planned_courses = Course.where(id: [3, 4])
+      @planned_courses = Course.where(mandatory: false )
+      @specialisations = @planned_courses.map { |course| course.specialisation}.uniq - [nil]
     end
 
     def create

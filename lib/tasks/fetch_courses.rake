@@ -77,7 +77,7 @@ end
 
 def add_courses_to_database(courses)
 	courses.each do |course|
-		columns = ["course_name", "course_code", "credits", "quarters", "level", "mandatory"]
+		columns = ["course_name", "course_code", "credits", "quarters", "level", "mandatory", "specialisation"]
 		# course_spec = Specialisation.find_or_create_by(name: course['specialisation'])
 		course = course.keep_if {|k,_| columns.include? k }
 		Course.create(course)

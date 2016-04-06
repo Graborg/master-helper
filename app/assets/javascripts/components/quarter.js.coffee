@@ -3,4 +3,4 @@
         React.DOM.div
             className: "quarter"
             for course in @props.courses
-                React.createElement SelectedCourse, key: course.id, course: course, handleChangeQuarter: @props.handleChangeQuarter
+                React.createElement SelectedCourse, key: course.id, course: course, handleChangeQuarter: @props.handleChangeQuarter, handleRemoveCourse: @props.handleRemoveCourse

@@ -5,7 +5,7 @@
     handleChange: (e) ->
       name = e.target.name
       @setState "#{ name }": e.target.value
-      @props.handleSearch.bind(this, e.target.value)
+      # @props.handleSearch.bind(this, e.target.value)
     render: ->
         React.createElement ReactBootstrap.Input,
             type: "text"

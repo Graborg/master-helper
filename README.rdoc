@@ -1,6 +1,6 @@
 TODO
 
-
+change \begin{description} to \paragraph eller subparagraph (titles too long)
 Functionality
 
 Fix the problem with course stretching over several columns, bootstrap rows instead of table?

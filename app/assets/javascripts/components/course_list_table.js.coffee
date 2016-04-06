@@ -11,6 +11,6 @@
                     React.DOM.th null, 'HP/Level/Spec'
                     React.DOM.th id:"quarter-header", 'Quarters'
                     React.DOM.th id: "add-link", ''
-            React.DOM.tbody id:"courselist-tbody",
+            React.DOM.tbody null,
                 for course in @props.courses
                     React.createElement CourseListRow, key: course.id, course: course, handleAddCourse: @props.handleAddCourse

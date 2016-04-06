@@ -1,8 +1,8 @@
 @getSpec = (course) ->
-    if course.specilisation
-        course.specilisation
+    if course.specialisation
+        course.specialisation
     else
-        'None'
+        ''
 @showQuarters = (course, quarter) ->
     match = (new RegExp(quarter)).test(course.quarters)
     if match then "success" else "default"
@@ -10,10 +10,9 @@
     handleAdd: ->
         @props.handleAddCourse(@props.course)
     render: ->
-        React.DOM.a
-            className: "add"
-            onClick: @handleAdd
-            React.DOM.tr null,
+        React.DOM.tr null,
+            React.DOM.a
+                onClick: @handleAdd
                 React.DOM.td colSpan:"2",
                     React.DOM.span className:"label label-success",
                         @props.course.course_name
@@ -25,8 +24,9 @@
                         @props.course.credits + " hp"
                     React.DOM.span className: "badge",
                         @props.course.level
-                    React.DOM.span className: "badge",
-                        getSpec(@props.course)
+                    if @props.course.specialisation
+                        React.DOM.span className: "badge",
+                            @props.course.specialisation
                 React.DOM.td className: "quarters",
                     React.DOM.span
                         className:"label label-#{showQuarters(@props.course, 1)}"
