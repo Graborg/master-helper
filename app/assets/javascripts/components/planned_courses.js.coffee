@@ -3,7 +3,7 @@
 
   getInitialState: ->
     courses: @props.courses
-    plannedCourses: [{course_code: 1, credits: 30, course_name: "Master Thesis", quarters: "123", selectedQuarter:"3", selectedYear: 5}]
+    plannedCourses: [{course_code: 1, credits: 30, course_name: "Master Thesis", course_length: 2, quarters:"123", available_quarters: "123", selectedQuarter:"2", selectedYear: 5}]
     credits: {spec: 0, adv: 30, advSpec: 0, total: 30}
     onlyAdvanced: false
     quarters: {1: true, 2: true, 3: true, 4: true }
@@ -12,7 +12,7 @@
 
   getDefaultProps: ->
     courses: []
-    plannedCourses: [{course_code: 1, credits: 30, course_name: "Master Thesis", quarters: "123", selectedQuarter:"3", selectedYear: 5}]
+    plannedCourses: [{course_code: 1, credits: 30, course_name: "Master Thesis", course_length: 2, quarters:"123", available_quarters: "123", selectedQuarter:"2", selectedYear: 5}]
     credits: {spec: 0, adv: 30, advSpec: 0, total: 30}
     quarters: {1: true, 2: true, 3: true, 4: true }
     specialisations: []
@@ -129,10 +129,10 @@
         React.DOM.div
             className: 'row'
             React.DOM.table
-                className: 'table table-bordered'
+                className: 'table'
                 React.DOM.thead null,
                   React.DOM.tr null,
-                    React.DOM.th id: 'year-col', 'Year'
+                    React.DOM.th id: 'year-col'
                     React.DOM.th null, 'LP1'
                     React.DOM.th null, 'LP2'
                     React.DOM.th null, 'LP3'
