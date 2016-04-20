@@ -9,3 +9,4 @@ If course is not available that year, Mark it with 'not available' and go to lin
 Quarters have been removed, instead there should only exist course length
 avail quarters and selected quarters
 
+Course can only strech two courses (hardcoded in school year)
