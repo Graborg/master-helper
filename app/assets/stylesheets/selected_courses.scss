@@ -1,21 +1,33 @@
+table{
+	border: white;
+}
 .course-btn{
 	margin: 0px !important;
 }
-tbody#selectedCourses td{
+tbody.selectedCourses{
+	border: white !important;
+}
+tbody.selectedCourses td{
 	padding: 0px !important;
 	text-align: center;
+	border: white !important;
 }
-tbody#selectedCourses button{
+tbody.selectedCourses button{
 	margin: 0px;
 	width:100%;
 	padding: 8px 8px 8px 8px;
 }
-tbody#selectedCourses button .row{
+tbody.selectedCourses button .row{
 	margin: 0px;
 	font-size:12px;
 }
-tbody#selectedCourses tr td:first-child {
+tbody.selectedCourses tr td:first-child {
+	border: white;
+	line-height: 50px !important;
 	vertical-align: middle;
+}
+th{
+	border: white !important;
 }
 th#year-col{
 	width: 37px !important;

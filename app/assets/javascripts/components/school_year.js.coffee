@@ -53,5 +53,5 @@
         coursesInQuarters = @coursesInQuarters(@props.plannedCourses)
         quarters_to_course = coursesInQuarters[0]
         courseCounter = coursesInQuarters[1]
-        React.DOM.tbody id: "selectedCourses",
+        React.DOM.tbody className: "selectedCourses",
           @dom_elements(quarters_to_course, courseCounter)
