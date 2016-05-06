@@ -78,9 +78,10 @@
     creditsHash.total -= course.credits
     @setState credits: creditsHash
 
+# Add course to planned courses
   addCourse: (course) ->
-    index = @state.courses.indexOf course
     @addCredits(course)
+    index = @state.courses.indexOf course
     plannedCourse = {}
     for key of course
         plannedCourse[key] = course[key]
@@ -89,7 +90,8 @@
     plannedCourse.selectedQuarter = plannedCourse.quarters[0]
     plannedCourse.selectedYear = 4
     plannedCourses = React.addons.update(@state.plannedCourses, { $push: [plannedCourse] })
-    courses = React.addons.update(@state.courses, { $splice: [[index, 1]] })
+    course.class = "hidden-row"
+    courses = React.addons.update(@state.courses, { $splice: [[index, 1, course]] })
     @setState plannedCourses: plannedCourses
     @setState courses: courses
 
@@ -100,8 +102,9 @@
     plannedCourses = React.addons.update(@state.plannedCourses, { $splice: [[index, 1]] })
     #Readd course to course list
     course.id = course.id / 10000
+    course.display = "inherit"
     # This needs to be added at the right index
-    courses = React.addons.update(@state.courses, { $splice: [[course.index, 0, course]] })
+    courses = React.addons.update(@state.courses, { $splice: [[course.index, 1, course]] })
     # new_courses = React.addons.update(@state.courses, { $push: [course] })
     @setState plannedCourses: plannedCourses
     @setState courses: courses

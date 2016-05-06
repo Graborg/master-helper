@@ -10,7 +10,9 @@
     handleAdd: ->
         @props.handleAddCourse(@props.course)
     render: ->
-        React.DOM.tr null,
+        React.DOM.tr
+            className: @props.course.class
+            id: @props.course
             React.DOM.a
                 onClick: @handleAdd
                 React.DOM.td colSpan:"2",

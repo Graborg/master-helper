@@ -11,5 +11,3 @@
                 React.DOM.div
                     className: 'panel-body'
                     React.createElement CourseListTable, courses: @props.courses, handleAddCourse: @props.handleAddCourse
-
-
