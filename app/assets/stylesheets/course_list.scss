@@ -8,8 +8,9 @@
 .quarters span{
 	margin-right: 5px;
 }
-tbody#courselist-tbody{
-	cursor: pointer !important;
+.course-list div.panel-body{
+	padding-left: 0 !important;
+	padding-top: 0 !important;
 }
 th#quarter-header{
 	text-align: center;

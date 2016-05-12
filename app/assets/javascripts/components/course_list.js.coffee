@@ -6,8 +6,11 @@
                 className: "panel panel-primary"
                 React.DOM.div
                     className: "panel-heading"
-                    'Courses'
-                    React.createElement CourseListHeader, specialisations: @props.specialisations, handleAdvancedSwitch: @props.handleAdvancedSwitch, handleSelectSpec: @props.handleSelectSpec, handleQuarterSelect: @props.handleQuarterSelect, handleSearch: @props.handleSearch
+                    'Courses for Information and Communcation Technology'
                 React.DOM.div
-                    className: 'panel-body'
-                    React.createElement CourseListTable, courses: @props.courses, handleAddCourse: @props.handleAddCourse
+                    className: "well"
+                    React.DOM.div
+                        React.createElement CourseListHeader, specialisations: @props.specialisations, handleAdvancedSwitch: @props.handleAdvancedSwitch, handleSelectSpec: @props.handleSelectSpec, handleQuarterSelect: @props.handleQuarterSelect, handleSearch: @props.handleSearch
+                    React.DOM.div
+                        className: 'panel-body'
+                        React.createElement CourseListTable, courses: @props.courses, handleAddCourse: @props.handleAddCourse

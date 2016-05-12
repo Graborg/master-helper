@@ -132,7 +132,7 @@
         React.DOM.div
             className: 'row'
             React.DOM.table
-                className: 'table'
+                className: 'well table'
                 React.DOM.thead null,
                   React.DOM.tr null,
                     React.DOM.th id: 'year-col'
