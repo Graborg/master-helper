@@ -1,13 +1,5 @@
 @CourseListHeader = React.createClass
-    getInitialState: ->
-        quartersPressed: {1: true, 2: true, 3: true, 4: true }
-    getBtnStyle: (quarter) ->
-        if @state.quartersPressed[quarter] then "info" else "default"
-    pressedQuarter: (quarter) ->
-        q = @state.quartersPressed
-        q[quarter] = !q[quarter]
-        @setState quartersPressed: q
-        @props.handleQuarterSelect q
+
     render: ->
         React.DOM.div
             className: "courselist-container container"
@@ -33,26 +25,8 @@
                         className: "container c"
                         React.DOM.div
                             className: "row"
-                            React.createElement ReactBootstrap.Button,
-                                bsStyle: @getBtnStyle(1)
-                                bsSize: "xsmall"
-                                onClick: @pressedQuarter.bind(this, 1)
-                                1
-                            React.createElement ReactBootstrap.Button,
-                                bsStyle: @getBtnStyle(2)
-                                bsSize: "xsmall"
-                                onClick: @pressedQuarter.bind(this, 2)
-                                2
-                            React.createElement ReactBootstrap.Button,
-                                bsStyle: @getBtnStyle(3)
-                                bsSize: "xsmall"
-                                onClick: @pressedQuarter.bind(this, 3)
-                                3
-                            React.createElement ReactBootstrap.Button,
-                                bsStyle: @getBtnStyle(4)
-                                bsSize: "xsmall"
-                                onClick: @pressedQuarter.bind(this, 4)
-                                4
+                            for q in [1..4]
+                                React.createElement QuarterButton, handleQuarterSelect: @props.handleQuarterSelect, quarter: q
                 React.DOM.div
                     className: "search-field col-lg-5 col-md-4 col-sm-4 col-xs-2"
                     React.createElement Search, handleSearch: @search
