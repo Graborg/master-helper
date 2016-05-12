@@ -25,3 +25,9 @@ th#quarter-header{
 .hidden-row{
 	display: none;
 }
+.courselist-buttons .btn-info#advanced-switch{
+	background-color:rgba(182, 182, 182, 0.89);
+}
+.btn-info.active{
+	background-color:  #03a9f4 !important;
+}
