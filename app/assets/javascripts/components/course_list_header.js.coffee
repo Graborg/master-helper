@@ -13,7 +13,7 @@
 
                         title: "Specialisation"
                         for specialisation in @props.specialisations
-                            React.createElement Specialisation, key: specialisation, specialisation: specialisation
+                            React.createElement Specialisation, key: specialisation, specialisation: specialisation, handleSelectSpec: @props.handleSelectSpec
                 React.DOM.div
                     className: "col-lg-2 col-md-2 col-sm-2 col-xs-2"
                     React.createElement AdvancedSwitch, handleAdvancedSwitch: @props.handleAdvancedSwitch

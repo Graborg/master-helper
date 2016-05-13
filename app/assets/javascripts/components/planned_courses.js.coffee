@@ -18,26 +18,28 @@
     specialisations: []
     specialisation: "all"
 
-  filterCoursesp: (c) ->
-    filteredCourses = c.filter(@filterBy("spec", @state.specialisation))
-    if @state.onlyAdvanced
-        filteredCourses = filteredCourses.filter(@filterBy("onlyAdvanced", @state.onlyAdvanced))
-    # Convert quarter buttons pressed to string, to be compared with courses' quarters
-    noFilter = true not in @state.quarters
-    for course in filteredCourses
-      # For each quarter do we match any?
-      display = false
-      if !noFilter
-        for enabled, index in @state.quarters
-            quarter = index + 1
-            if enabled
-              if quarter.toString() == course.quarters[0]
-                  display = true
-      if display or noFilter
-        course.class = ""
-      else
-        course.class = "hidden-row"
-    filteredCourses
+  filterCoursesp: ->
+    for course in @state.courses
+        display = false
+        # specialisation filter
+        if course.specialisation == @state.specialisation or @state.specialisation == "all"
+            display = true
+        # advanced filter
+        if @state.onlyAdvanced and course.level isnt "A"
+            display = false
+        # quarter filter
+        quarterFilter = true in @state.quarters
+        if quarterFilter is on
+            startingQuarter = course.quarters[0]
+            # Check if the course starting quarter isn't allowed in @state.quarters
+            if not @state.quarters[startingQuarter - 1]
+                display = false
+        # final verdict
+        if display
+            course.class = ""
+        else
+            course.class = "hidden-row"
+    @state.courses
 
   filterBy: (key, value) ->
         (course) ->
@@ -107,7 +109,6 @@
     index = @state.plannedCourses.indexOf course
     @removeCredits(course)
     plannedCourses = React.addons.update(@state.plannedCourses, { $splice: [[index, 1]] })
-    #Readd course to course list
     course.id = course.id / 10000
     # course.display = "inherit"
     # This needs to be added at the right index
@@ -133,7 +134,7 @@
     @replaceState courses: courses
 
   render: ->
-    courses = @filterCoursesp(@state.courses)
+    courses = @filterCoursesp()
     React.DOM.div
         className: 'well'
         React.DOM.div

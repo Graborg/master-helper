@@ -1,5 +1,5 @@
 @Specialisation = React.createClass
-    selectSpec: ->
+    selectSpec: (e) ->
         @props.handleSelectSpec @props.specialisation
 
     render: ->
