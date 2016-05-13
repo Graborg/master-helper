@@ -1,5 +1,4 @@
 @CourseListHeader = React.createClass
-
     render: ->
         React.DOM.div
             className: "courselist-container container"
@@ -12,10 +11,7 @@
                         bsSize: "small"
                         title: "Specialisation"
                         for specialisation in @props.specialisations
-                            React.createElement ReactBootstrap.MenuItem,
-                                title:specialisation
-                                onSelect: @props.handleSelectSpec.bind(this, specialisation)
-                                specialisation
+                            React.createElement Specialisation, key: specialisation, specialisation: specialisation
                 React.DOM.div
                     className: "col-lg-2 col-md-2 col-sm-2 col-xs-2"
                     React.createElement AdvancedSwitch, handleAdvancedSwitch: @props.handleAdvancedSwitch
@@ -26,7 +22,7 @@
                         React.DOM.div
                             className: "row"
                             for q in [1..4]
-                                React.createElement QuarterButton, handleQuarterSelect: @props.handleQuarterSelect, quarter: q
+                                React.createElement QuarterButton, key: q, handleQuarterSelect: @props.handleQuarterSelect, quarter: q
                 React.DOM.div
                     className: "search-field col-lg-5 col-md-4 col-sm-4 col-xs-2"
                     React.createElement Search, handleSearch: @search

@@ -13,4 +13,4 @@
                     React.DOM.th id: "add-link", ''
             React.DOM.tbody null,
                 for course in @props.courses
-                    React.createElement CourseListRow, key: course.id, course: course, handleAddCourse: @props.handleAddCourse
+                    React.createElement CourseListRow, key: course.code, course: course, handleAddCourse: @props.handleAddCourse

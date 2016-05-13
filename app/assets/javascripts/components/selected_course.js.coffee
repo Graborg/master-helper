@@ -1,15 +1,17 @@
 @SelectedCourse = React.createClass
-    removeCourse:(course)->
-        @props.handleRemoveCourse course
+    removeCourse: ->
+        @props.handleRemoveCourse @props.course
+    changeQuarter: ->
+        @props.handleChangeQuarter @props.course
     render: ->
         React.DOM.div
             className: "course-div " + "quarters-#{@props.course.quarters.length}"
             React.DOM.a
-                onClick: @removeCourse.bind(this, @props.course)
+                onClick: @removeCourse
                 React.createElement ReactBootstrap.Glyphicon,
                     glyph: "remove-circle"
             React.createElement ReactBootstrap.Button,
-                onClick: @props.handleChangeQuarter.bind(this, @props.course)
+                onClick: @changeQuarter
                 bsStyle: "primary"
                 className: "quarters-#{@props.course.quarters.length}"
                 React.DOM.div

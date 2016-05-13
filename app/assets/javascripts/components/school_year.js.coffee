@@ -19,14 +19,17 @@
                         continue
                     else
                         occupied = course.quarters.length > 1
+                        # Push element as intended
                         temp.push(
-                            React.DOM.td colSpan: course.quarters.length, key: course.id,
-                              React.createElement SelectedCourse, course: course, handleChangeQuarter: @props.handleChangeQuarter, handleRemoveCourse: @props.handleRemoveCourse
+                            React.DOM.td colSpan: course.quarters.length, key: i,
+                              React.createElement SelectedCourse, key: i-5000, course: course, handleChangeQuarter: @props.handleChangeQuarter, handleRemoveCourse: @props.handleRemoveCourse
                         )
                         i += 1
                 else
-                    temp.push(React.DOM.td null, "") if not occupied
+                    # Push an empy td to fill out the space
+                    temp.push(React.DOM.td key: i + quarterNo + rows + 5000, "") if not occupied
                     occupied = false
+                    # If the row is filled, we switch row
                 if quarterNo == 4
                   rows += 1
                   insert_elements.push(React.DOM.tr null, temp)
