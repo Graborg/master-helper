@@ -9,7 +9,9 @@
 
     render: ->
         React.createElement ReactBootstrap.Button,
+            className: "quarter-filter"
             active: @state.enabled
             bsSize: "xsmall"
+            bsStyle: "info"
             onClick: @pressedQuarter
             @props.quarter

@@ -1,37 +1,41 @@
-#add-link{
+#add-link {
 	text-align: right;
 	width: 35px !important;
 }
 .quarters {
 	text-align: center;
 }
-.quarters span{
+.quarters span {
 	margin-right: 5px;
 }
-div.course-list{
+div.course-list {
 	padding-right: 26px !important;
 }
-.course-list div.panel-body{
+.course-list div.panel-body {
 	padding-left: 0 !important;
 	padding-top: 0 !important;
 }
-th#quarter-header{
+th#quarter-header {
 	text-align: center;
 }
-.label-default{
+.label-default {
 	opacity: 0.6;
 }
-
-.quarter a{
-	color:white;
+.quarter a {
+	color: white;
 }
-
-.hidden-row{
+.hidden-row {
 	display: none;
 }
-.courselist-buttons .btn-info#advanced-switch{
-	background-color:rgba(182, 182, 182, 0.89);
+.dropdown-toggle#specialisation-toggle {
+	background-color: #03a9f4 !important;
 }
-.btn-info.active{
-	background-color:  #03a9f4 !important;
+.btn-info:not(:active) {
+	background-color: rgba(182, 182, 182, 0.89) !important;
+}
+.courselist-buttons .btn-info.active#advanced-switch {
+	background-color: #03a9f4 !important;
+}
+.courselist-buttons .btn-info.quarter-filter.active {
+	background-color: #3f51b5 !important;
 }

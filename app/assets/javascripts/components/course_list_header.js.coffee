@@ -9,6 +9,8 @@
                     React.createElement ReactBootstrap.DropdownButton,
                         bsStyle: "info"
                         bsSize: "small"
+                        id: "specialisation-toggle"
+
                         title: "Specialisation"
                         for specialisation in @props.specialisations
                             React.createElement Specialisation, key: specialisation, specialisation: specialisation
