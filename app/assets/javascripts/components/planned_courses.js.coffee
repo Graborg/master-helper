@@ -6,7 +6,7 @@
     plannedCourses: [{course_code: 1, credits: 30, course_name: "Master Thesis", course_length: 2, quarters:"12", available_quarters: "123", selectedQuarter:"3", selectedYear: 5}]
     credits: {spec: 0, adv: 30, advSpec: 0, total: 30}
     onlyAdvanced: false
-    quarters: {1: true, 2: true, 3: true, 4: true }
+    quarters: [false, false, false, false]
     specialisations: @props.specialisations
     specialisation: "all"
 
@@ -14,7 +14,7 @@
     courses: []
     plannedCourses: [{course_code: 1, credits: 30, course_name: "Master Thesis", course_length: 2, quarters:"12", available_quarters: "123", selectedQuarter:"3", selectedYear: 5}]
     credits: {spec: 0, adv: 30, advSpec: 0, total: 30}
-    quarters: {1: true, 2: true, 3: true, 4: true }
+    quarters: [false, false, false, false]
     specialisations: []
     specialisation: "all"
 
@@ -22,11 +22,21 @@
     filteredCourses = c.filter(@filterBy("spec", @state.specialisation))
     if @state.onlyAdvanced
         filteredCourses = filteredCourses.filter(@filterBy("onlyAdvanced", @state.onlyAdvanced))
-     #Convert quarter buttons pressed to string, to be compared with courses' quarters
-    selectedQString = ""
-    for k of @state.quarters
-        selectedQString += k.toString() if @state.quarters[k]
-    filteredCourses = filteredCourses.filter(@filterBy("quarters", selectedQString))
+    # Convert quarter buttons pressed to string, to be compared with courses' quarters
+    noFilter = true not in @state.quarters
+    for course in filteredCourses
+      # For each quarter do we match any?
+      display = false
+      if !noFilter
+        for enabled, index in @state.quarters
+            quarter = index + 1
+            if enabled
+              if quarter.toString() == course.quarters[0]
+                  display = true
+      if display or noFilter
+        course.class = ""
+      else
+        course.class = "hidden-row"
     filteredCourses
 
   filterBy: (key, value) ->
@@ -35,17 +45,14 @@
                 course.level == "A"
             else if key == 'spec'
                 course.specialisation == value || value == "all"
-            else if key == 'quarters'
-                inQ = false
-                for q in value
-                    #if any of the numbers in q match any of the numbers in course.quarters
-                    inQ = q in course.quarters if !inQ
-                inQ
             else
                true
 
-  selectQuarters: (quarterHash) ->
-    @setState quarters: quarterHash
+  selectQuarters: (quarter) ->
+    enabled = @state.quarters[quarter-1]
+    # quarters = React.addons.update(@state.quarters, {"#{quarter}": {$set: !@state.quarters[quarter] }});
+    quarters = React.addons.update(@state.quarters, { $splice: [[quarter-1, 1, !enabled]] })
+    @setState quarters: quarters
 
   selectSpec: (spec) ->
     @setState specialisation: spec
@@ -102,7 +109,7 @@
     plannedCourses = React.addons.update(@state.plannedCourses, { $splice: [[index, 1]] })
     #Readd course to course list
     course.id = course.id / 10000
-    course.display = "inherit"
+    # course.display = "inherit"
     # This needs to be added at the right index
     courses = React.addons.update(@state.courses, { $splice: [[course.index, 1, course]] })
     # new_courses = React.addons.update(@state.courses, { $push: [course] })
@@ -142,7 +149,5 @@
                     React.DOM.th null, 'LP4',
                 React.createElement SchoolYear, key: 1, plannedCourses: @state.plannedCourses, year: 4, handleChangeQuarter: @changeQuarter, handleRemoveCourse: @removeCourse
                 React.createElement SchoolYear, key: 2, plannedCourses: @state.plannedCourses, year: 5, handleChangeQuarter: @changeQuarter, handleRemoveCourse: @removeCourse
-            React.DOM.div
-                className: 'container course-credits'
             React.createElement CourseList, courses: courses, specialisations: @state.specialisations, handleAddCourse: @addCourse, handleAdvancedSwitch: @advancedSwitch, handleSelectSpec: @selectSpec, handleQuarterSelect: @selectQuarters, handleSearch: @search
             React.createElement CreditsBox, credits: @state.credits
