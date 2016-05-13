@@ -32,8 +32,8 @@
                     # If the row is filled, we switch row
                 if quarterNo == 4
                   rows += 1
-                  insert_elements.push(React.DOM.tr null, temp)
-        insert_elements.unshift(React.DOM.tr null, React.DOM.td rowSpan:rows+1, @props.year)
+                  insert_elements.push(React.DOM.tr key: i + rows, temp)
+        insert_elements.unshift(React.DOM.tr key: rows + i + @props.year , React.DOM.td rowSpan:rows+1, @props.year)
         return insert_elements
 
     # Return a hash with the different courses mapped with the different quarters

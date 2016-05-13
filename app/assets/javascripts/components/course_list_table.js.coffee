@@ -12,5 +12,5 @@
                     React.DOM.th id:"quarter-header", 'Quarters'
                     React.DOM.th id: "add-link", ''
             React.DOM.tbody null,
-                for course in @props.courses
-                    React.createElement CourseListRow, key: course.code, course: course, handleAddCourse: @props.handleAddCourse
+                for course, i in @props.courses
+                    React.createElement CourseListRow, key: course.course_code + i , course: course, handleAddCourse: @props.handleAddCourse
