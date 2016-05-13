@@ -8,6 +8,7 @@
             className: "course-div " + "quarters-#{@props.course.quarters.length}"
             React.DOM.a
                 onClick: @removeCourse
+                className: "hidden-element" if @props.course.notClosable
                 React.createElement ReactBootstrap.Glyphicon,
                     glyph: "remove-circle"
             React.createElement ReactBootstrap.Button,

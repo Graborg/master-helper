@@ -3,7 +3,7 @@
 
   getInitialState: ->
     courses: @props.courses
-    plannedCourses: [{course_code: 1, credits: 30, course_name: "Master Thesis", course_length: 2, quarters:"12", available_quarters: "123", selectedQuarter:"3", selectedYear: 5}]
+    plannedCourses: [{course_code: 1, credits: 30, course_name: "Master Thesis", course_length: 2, quarters:"12", available_quarters: "123", selectedQuarter:"3", selectedYear: 5, notClosable: true}]
     credits: {spec: 0, adv: 30, advSpec: 0, total: 30}
     onlyAdvanced: false
     quarters: [false, false, false, false]
@@ -12,7 +12,7 @@
 
   getDefaultProps: ->
     courses: []
-    plannedCourses: [{course_code: 1, credits: 30, course_name: "Master Thesis", course_length: 2, quarters:"12", available_quarters: "123", selectedQuarter:"3", selectedYear: 5}]
+    plannedCourses: [{course_code: 1, credits: 30, course_name: "Master Thesis", course_length: 2, quarters:"12", available_quarters: "123", selectedQuarter:"3", selectedYear: 5, notClosable: true}]
     credits: {spec: 0, adv: 30, advSpec: 0, total: 30}
     quarters: [false, false, false, false]
     specialisations: []
@@ -35,10 +35,10 @@
             if not @state.quarters[startingQuarter - 1]
                 display = false
         # final verdict
-        if display
+        if display && course.class isnt "hidden-element"
             course.class = ""
         else
-            course.class = "hidden-row"
+            course.class = "hidden-element"
     @state.courses
 
   filterBy: (key, value) ->
@@ -99,7 +99,7 @@
     plannedCourse.selectedQuarter = plannedCourse.quarters[0]
     plannedCourse.selectedYear = 4
     plannedCourses = React.addons.update(@state.plannedCourses, { $push: [plannedCourse] })
-    course.class = "hidden-row"
+    course.class = "hidden-element"
     courses = React.addons.update(@state.courses, { $splice: [[index, 1, course]] })
     @setState plannedCourses: plannedCourses
     @setState courses: courses
@@ -110,21 +110,22 @@
     @removeCredits(course)
     plannedCourses = React.addons.update(@state.plannedCourses, { $splice: [[index, 1]] })
     course.id = course.id / 10000
-    # course.display = "inherit"
     # This needs to be added at the right index
     courses = React.addons.update(@state.courses, { $splice: [[course.index, 1, course]] })
     # new_courses = React.addons.update(@state.courses, { $push: [course] })
     @setState plannedCourses: plannedCourses
     @setState courses: courses
+
   changeQuarter: (course) ->
-    qIndex = (course.quarters.indexOf course.selectedQuarter) + 1
     courseIndex = @state.plannedCourses.indexOf course
     plannedCourses = @state.plannedCourses
-    if ! course.quarters[qIndex]?
-        qIndex = 0
+    currentQuarterIndex = (course.available_quarters.indexOf course.selectedQuarter)
+    newQuarterIndex = currentQuarterIndex + 1
+    if newQuarterIndex > course.available_quarters.length - 1
+        newQuarterIndex = 0
         newYear = if course.selectedYear == 5 then 4 else 5
         course.selectedYear = newYear
-    course.selectedQuarter = course.quarters[qIndex]
+    course.selectedQuarter = course.available_quarters[newQuarterIndex]
     plannedCourses[courseIndex] = course
     @setState plannedCourses: plannedCourses
 
