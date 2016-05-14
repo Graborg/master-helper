@@ -8,6 +8,9 @@
 .quarters span {
 	margin-right: 5px;
 }
+.quarters .label-success {
+	background-color: #3f51b5 !important;
+}
 div.course-list {
 	padding-right: 26px !important;
 }
@@ -24,7 +27,7 @@ th#quarter-header {
 .quarter a {
 	color: white;
 }
-.hidden-element {
+.hidden-element, .hidden-row {
 	display: none;
 }
 .dropdown-toggle#specialisation-toggle {

@@ -35,7 +35,7 @@
             if not @state.quarters[startingQuarter - 1]
                 display = false
         # final verdict
-        if display && course.class isnt "hidden-element"
+        if display && course.class isnt "hidden-row"
             course.class = ""
         else
             course.class = "hidden-element"
@@ -99,7 +99,7 @@
     plannedCourse.selectedQuarter = plannedCourse.quarters[0]
     plannedCourse.selectedYear = 4
     plannedCourses = React.addons.update(@state.plannedCourses, { $push: [plannedCourse] })
-    course.class = "hidden-element"
+    course.class = "hidden-row"
     courses = React.addons.update(@state.courses, { $splice: [[index, 1, course]] })
     @setState plannedCourses: plannedCourses
     @setState courses: courses
