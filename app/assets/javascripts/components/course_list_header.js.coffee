@@ -27,4 +27,4 @@
                                 React.createElement QuarterButton, key: q, handleQuarterSelect: @props.handleQuarterSelect, quarter: q
                 React.DOM.div
                     className: "search-field col-lg-5 col-md-4 col-sm-4 col-xs-2"
-                    React.createElement Search, handleSearch: @search
+                    React.createElement Search, handleSearch: @props.handleSearch

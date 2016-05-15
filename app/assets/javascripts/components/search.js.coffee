@@ -4,7 +4,9 @@
 
     handleChange: (e) ->
       name = e.target.name
+      @props.handleSearch e
       @setState "#{ name }": e.target.value
+
     render: ->
         React.createElement ReactBootstrap.Input,
             type: "text"

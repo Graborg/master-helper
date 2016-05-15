@@ -9,6 +9,7 @@
     quarters: [false, false, false, false]
     specialisations: @props.specialisations
     specialisation: "all"
+    showAlert: false
 
   getDefaultProps: ->
     courses: []
@@ -63,7 +64,11 @@
     @setState onlyAdvanced: !@state.onlyAdvanced
 
   search: (searchString)->
-    console.log searchString
+    console.log "hej" 
+    @setState showAlert: true
+
+  dismissAlert: (e) ->
+    @setState showAlert: false
 
   addCredits: (course) ->
     creditsHash = @state.credits
@@ -110,6 +115,7 @@
     @removeCredits(course)
     plannedCourses = React.addons.update(@state.plannedCourses, { $splice: [[index, 1]] })
     course.id = course.id / 10000
+
     # This needs to be added at the right index
     courses = React.addons.update(@state.courses, { $splice: [[course.index, 1, course]] })
     # new_courses = React.addons.update(@state.courses, { $push: [course] })
@@ -153,3 +159,4 @@
                 React.createElement SchoolYear, plannedCourses: @state.plannedCourses, year: 5, handleChangeQuarter: @changeQuarter, handleRemoveCourse: @removeCourse
             React.createElement CourseList, courses: courses, specialisations: @state.specialisations, handleAddCourse: @addCourse, handleAdvancedSwitch: @advancedSwitch, handleSelectSpec: @selectSpec, handleQuarterSelect: @selectQuarters, handleSearch: @search
             React.createElement CreditsBox, credits: @state.credits
+        React.createElement Alert, handleDismissAlert: @dismissAlert if @state.showAlert
