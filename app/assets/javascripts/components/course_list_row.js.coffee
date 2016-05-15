@@ -10,6 +10,7 @@
     handleAdd: ->
         @props.handleAddCourse(@props.course)
     render: ->
+        levelBadge = if @props.course.level is "A" then "badge advanced-badge" else "badge other-level"
         React.DOM.tr
             className: @props.course.class
             id: @props.course
@@ -21,13 +22,13 @@
                 React.DOM.td null,
                     React.DOM.span className: "label label-success",
                         @props.course.course_code
-                React.DOM.td null,
-                    React.DOM.span className: "badge",
+                React.DOM.td className: "hplevelspec",
+                    React.DOM.span className: "badge hp-badge",
                         @props.course.credits + " hp"
-                    React.DOM.span className: "badge",
+                    React.DOM.span className: levelBadge,
                         @props.course.level
                     if @props.course.specialisation
-                        React.DOM.span className: "badge",
+                        React.DOM.span className: "badge spec-badge",
                             @props.course.specialisation
                 React.DOM.td className: "quarters",
                     React.DOM.span

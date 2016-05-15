@@ -5,7 +5,7 @@
         insert_elements = []
         i = 0
         rows = 0
-        while i < courseCounter
+        loop
             occupied = false
             temp = []
             for quarterNo in [1..4]
@@ -33,6 +33,7 @@
                 if quarterNo == 4
                   rows += 1
                   insert_elements.push(React.DOM.tr key: i + rows, temp)
+            break if i >= courseCounter
         insert_elements.unshift(React.DOM.tr key: rows + i + @props.year , React.DOM.td rowSpan:rows+1, @props.year)
         return insert_elements
 

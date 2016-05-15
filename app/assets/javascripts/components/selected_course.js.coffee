@@ -14,7 +14,7 @@
             React.createElement ReactBootstrap.Button,
                 onClick: @changeQuarter
                 bsStyle: "primary"
-                className: "quarters-#{@props.course.quarters.length}"
+                className: "selected-course"
                 React.DOM.div
                     className: 'row'
                     React.DOM.div

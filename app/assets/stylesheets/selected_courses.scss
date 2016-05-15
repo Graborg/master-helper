@@ -1,13 +1,8 @@
-table{
-	border: white;
-}
-.course-btn{
-	margin: 0px !important;
-}
 tbody.selectedCourses{
 	border: white !important;
 }
 tbody.selectedCourses td{
+    height: 52px !important;
 	padding: 0px !important;
 	text-align: center;
 	border: white !important;
@@ -56,4 +51,12 @@ th#year-col{
 }
 a:hover span.glyphicon.glyphicon-remove-circle{
 	color:white !important;
+}
+
+table tbody.selectedCourses:nth-child(2){
+    border-bottom: #015C83 1px solid !important;
+}
+button.selected-course{
+    height: 52px;
+    border-radius: 1px;
 }

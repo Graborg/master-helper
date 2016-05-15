@@ -30,15 +30,24 @@ th#quarter-header {
 .hidden-element, .hidden-row {
 	display: none;
 }
-.dropdown-toggle#specialisation-toggle {
-	background-color: #03a9f4 !important;
+#specialisation-toggle, #specialisation-toggle span, span.badge.spec-badge {
+	background-color: #017BB0 !important;
+}
+.courselist-buttons .btn-info.active#advanced-switch, span.badge.advanced-badge {
+    background-color: #015C83 !important;
 }
 .btn-info:not(:active) {
 	background-color: rgba(182, 182, 182, 0.89) !important;
 }
-.courselist-buttons .btn-info.active#advanced-switch {
-	background-color: #03a9f4 !important;
-}
 .courselist-buttons .btn-info.quarter-filter.active {
 	background-color: #3f51b5 !important;
+}
+span.badge.other-level{
+    background-color: #00776A !important;
+}
+span.badge.hp-badge{
+    background-color: #007165 !important;
+}
+.progress-bar{
+    background-color: #007165 !important;
 }
