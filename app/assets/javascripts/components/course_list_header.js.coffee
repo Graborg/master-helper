@@ -1,4 +1,11 @@
 @CourseListHeader = React.createClass
+    getInitialState: ->
+        title: "Specialisation"
+
+    handleSelectSpec: (spec) ->
+        @setState title: spec
+        @props.handleSelectSpec(spec)
+
     render: ->
         React.DOM.div
             className: "courselist-container container"
@@ -11,9 +18,9 @@
                         bsSize: "small"
                         id: "specialisation-toggle"
 
-                        title: "Specialisation"
+                        title: @state.title
                         for specialisation in @props.specialisations
-                            React.createElement Specialisation, key: specialisation, specialisation: specialisation, handleSelectSpec: @props.handleSelectSpec
+                            React.createElement Specialisation, key: specialisation, title: @state.title, specialisation: specialisation, handleSelectSpec: @handleSelectSpec
                 React.DOM.div
                     className: "col-lg-2 col-md-2 col-sm-2 col-xs-2"
                     React.createElement AdvancedSwitch, handleAdvancedSwitch: @props.handleAdvancedSwitch

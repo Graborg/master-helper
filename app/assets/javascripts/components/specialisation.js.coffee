@@ -3,8 +3,9 @@
         @props.handleSelectSpec @props.specialisation
 
     render: ->
+        id = if (@props.title is @props.specialisation) then "active-spec" else ""
         React.createElement ReactBootstrap.MenuItem,
-            key: @props.specialisation
+            id: id
             title: @props.specialisation
             onSelect: @selectSpec
             @props.specialisation

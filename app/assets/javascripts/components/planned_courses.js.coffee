@@ -7,8 +7,8 @@
     credits: {spec: 0, adv: 30, advSpec: 0, total: 30}
     onlyAdvanced: false
     quarters: [false, false, false, false]
-    specialisations: @props.specialisations
-    specialisation: "all"
+    specialisations: ["All"].concat @props.specialisations
+    specialisation: "All"
     showAlert: false
 
   getDefaultProps: ->
@@ -17,13 +17,13 @@
     credits: {spec: 0, adv: 30, advSpec: 0, total: 30}
     quarters: [false, false, false, false]
     specialisations: []
-    specialisation: "all"
+    specialisation: "All"
 
   filterCoursesp: ->
     for course in @state.courses
         display = false
         # specialisation filter
-        if course.specialisation == @state.specialisation or @state.specialisation == "all"
+        if course.specialisation == @state.specialisation or @state.specialisation == "All"
             display = true
         # advanced filter
         if @state.onlyAdvanced and course.level isnt "A"
@@ -38,18 +38,9 @@
         # final verdict
         if display
             course.class = course.class.replace(' hidden-element','') if course.class
-        else
+        else if course.class isnt " hidden-element"
             course.class = if course.class then course.class + " hidden-element" else " hidden-element"
     @state.courses
-
-  filterBy: (key, value) ->
-        (course) ->
-            if key == 'onlyAdvanced'
-                course.level == "A"
-            else if key == 'spec'
-                course.specialisation == value || value == "all"
-            else
-               true
 
   selectQuarters: (quarter) ->
     enabled = @state.quarters[quarter-1]
@@ -64,7 +55,6 @@
     @setState onlyAdvanced: !@state.onlyAdvanced
 
   search: (searchString)->
-    console.log "hej" 
     @setState showAlert: true
 
   dismissAlert: (e) ->
