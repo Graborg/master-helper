@@ -8,7 +8,7 @@
         React.createElement ReactBootstrap.Button,
             active: @state.disabled
             onClick: @click
+            className: "btn"
             id: "advanced-switch"
-            bsStyle: "info"
             bsSize: "small"
             "Advanced"

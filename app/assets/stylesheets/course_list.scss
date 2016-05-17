@@ -33,13 +33,15 @@ th#quarter-header {
 #specialisation-toggle, #specialisation-toggle span, span.badge.spec-badge {
 	background-color: #017BB0 !important;
 }
-.courselist-buttons .btn-info.active#advanced-switch, span.badge.advanced-badge {
+.courselist-buttons .active#advanced-switch, #advanced-switch:active, span.badge.advanced-badge {
+    color: white !important;
     background-color: #015C83 !important;
 }
-.btn-info:not(:active) {
+#advanced-switch:not(:active), button.quarter-filter:not(:active)  {
+    color: white !important;
 	background-color: rgba(182, 182, 182, 0.89) !important;
 }
-.courselist-buttons .btn-info.quarter-filter.active {
+.courselist-buttons button.quarter-filter.active, .btn.quarter-filter:active {
 	background-color: #3f51b5 !important;
 }
 span.badge.other-level{
