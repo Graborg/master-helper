@@ -149,4 +149,5 @@
                 React.createElement SchoolYear, plannedCourses: @state.plannedCourses, year: 5, handleChangeQuarter: @changeQuarter, handleRemoveCourse: @removeCourse
             React.createElement CourseList, courses: courses, specialisations: @state.specialisations, handleAddCourse: @addCourse, handleAdvancedSwitch: @advancedSwitch, handleSelectSpec: @selectSpec, handleQuarterSelect: @selectQuarters, handleSearch: @search
             React.createElement CreditsBox, credits: @state.credits
+
         React.createElement Alert, handleDismissAlert: @dismissAlert if @state.showAlert

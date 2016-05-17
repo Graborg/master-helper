@@ -74,5 +74,10 @@
                     className: 'col-md-12 col-lg-12 col-xs-12 col-sm-12'
                     React.createElement ReactBootstrap.ProgressBar,
                         now: @props.credits.total / 120 * 100
-
-
+        React.DOM.div
+            className: 'well eval-well'
+            "Please evaluate this application here! >>>>"
+            React.createElement ReactBootstrap.Button,
+                bsStyle: "primary"
+                href: "https://sv.surveymonkey.com/r/GLPK5NQ"
+                "Tack!"
