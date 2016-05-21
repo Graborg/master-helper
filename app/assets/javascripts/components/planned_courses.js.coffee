@@ -17,6 +17,7 @@
     credits: {spec: 0, adv: 30, advSpec: 0, total: 30}
     quarters: [false, false, false, false]
     specialisations: []
+    localStorageKey: 1
     specialisation: "All"
 
   filterCoursesp: ->
