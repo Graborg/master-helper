@@ -1,5 +1,6 @@
 
 @PlannedCourses = React.createClass
+  mixins: [LocalStorageMixin]
 
   getInitialState: ->
     courses: @props.courses

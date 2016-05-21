@@ -32,6 +32,8 @@ gem 'quiet_assets'
 gem 'rest-client'
 gem 'nokogiri', '~> 1.6.6.2'
 gem 'react-bootstrap-rails'
+gem "browserify-rails"
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -49,4 +51,3 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-
