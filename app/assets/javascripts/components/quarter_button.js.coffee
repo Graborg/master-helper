@@ -1,5 +1,5 @@
 @QuarterButton = React.createClass
-
+    displayName: "Quarte_button"
     getInitialState: ->
         enabled: false
 

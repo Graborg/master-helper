@@ -1,4 +1,5 @@
 @Search = React.createClass
+    displayName: "search"
     getInitialState: ->
       value: ''
 

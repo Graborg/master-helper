@@ -2,8 +2,6 @@
     getInitialState: ->
         title: "Specialisation"
         open: false
-    getDefaultProps: ->
-        localStorageKey: 2
     handleSelectSpec: (spec) ->
         @setState title: spec
         @setState open: false
@@ -40,4 +38,4 @@
                                 React.createElement QuarterButton, key: q, localStorageKey: q, handleQuarterSelect: @props.handleQuarterSelect, quarter: q
                 React.DOM.div
                     className: "search-field col-lg-5 col-md-4 col-sm-4 col-xs-2"
-                    React.createElement Search, localStorageKey: 10, handleSearch: @props.handleSearch
+                    React.createElement Search, handleSearch: @props.handleSearch

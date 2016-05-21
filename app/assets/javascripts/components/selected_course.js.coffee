@@ -1,4 +1,5 @@
 @SelectedCourse = React.createClass
+    displayName: "selected_course"
     removeCourse: ->
         @props.handleRemoveCourse @props.course
     changeQuarter: ->

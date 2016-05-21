@@ -1,5 +1,5 @@
 @SchoolYear = React.createClass
-
+    displayName: "school_year"
     # Return elements in DOM-order
     dom_elements: (courses, courseCounter) ->
         insert_elements = []

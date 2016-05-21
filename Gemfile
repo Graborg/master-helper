@@ -33,6 +33,8 @@ gem 'rest-client'
 gem 'nokogiri', '~> 1.6.6.2'
 gem 'react-bootstrap-rails'
 gem "browserify-rails"
+gem 'coffee-react'
+
 
 # Use Unicorn as the app server
 # gem 'unicorn'

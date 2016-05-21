@@ -1,4 +1,5 @@
 @Specialisation = React.createClass
+    displayName: "specialisation"
     selectSpec: (e) ->
         @props.handleSelectSpec @props.specialisation
 

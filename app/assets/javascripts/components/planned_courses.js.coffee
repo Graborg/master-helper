@@ -1,6 +1,8 @@
 
 @PlannedCourses = React.createClass
+  displayName: "main_component"
   mixins: [LocalStorageMixin]
+
   getInitialState: ->
     courses: @props.courses
     plannedCourses: [{course_code: 1, credits: 30, course_name: "Master Thesis", course_length: 2, quarters:"12", available_quarters: "123", selectedQuarter:"3", selectedYear: 5, notClosable: true}]
@@ -17,7 +19,6 @@
     credits: {spec: 0, adv: 30, advSpec: 0, total: 30}
     quarters: [false, false, false, false]
     specialisations: []
-    localStorageKey: 1
     specialisation: "All"
 
   filterCoursesp: ->

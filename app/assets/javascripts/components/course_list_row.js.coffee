@@ -7,6 +7,7 @@
     match = (new RegExp(quarter)).test(course.quarters)
     if match then "success" else "default"
 @CourseListRow = React.createClass
+    displayName: "course_list_row"
     handleAdd: ->
         @props.handleAddCourse(@props.course)
     render: ->

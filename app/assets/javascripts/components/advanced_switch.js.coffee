@@ -1,4 +1,5 @@
 @AdvancedSwitch = React.createClass
+    displayName: "advanced-switch"
     getInitialState: ->
         disabled: false
     click: (e) ->

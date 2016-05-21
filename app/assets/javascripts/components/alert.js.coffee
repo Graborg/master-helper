@@ -1,4 +1,5 @@
 @Alert = React.createClass
+    displayName: "alert"
     render: ->
         React.createElement ReactBootstrap.Alert,
             bsStyle:"warning"

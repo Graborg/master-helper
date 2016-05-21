@@ -1,4 +1,5 @@
 @CreditsBox = React.createClass
+    displayName: "credits_box"
     render: ->
       React.DOM.div
         className: 'col-md-4 col-lg-4 col-xs-4 col-sm-4 credits-box'

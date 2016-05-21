@@ -1,4 +1,5 @@
 @CourseListTable = React.createClass
+    displayName: "course_list_table"
     render: ->
         React.createElement ReactBootstrap.Table,
             striped: true
