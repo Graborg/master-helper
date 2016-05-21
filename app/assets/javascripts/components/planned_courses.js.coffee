@@ -55,38 +55,27 @@
     advancedSwitch: (e) ->
         @setState onlyAdvanced: !@state.onlyAdvanced
 
-  search: (searchString)->
-      @setState showAlert: true
+    search: (searchString)->
+        @setState showAlert: true
 
     dismissAlert: (e) ->
         @setState showAlert: false
 
-
-    addCredits: (course) ->
+    changeCredits: (course, op) ->
+        credits = if op is "add" then course.credits else -1 * course.credits
         creditsHash = @state.credits
         if course.specialisation
-            creditsHash.spec += course.credits
+            creditsHash.spec += credits
         if course.level == "A"
-            creditsHash.adv += course.credits
+            creditsHash.adv += credits
         if course.specialisation and course.level == "A"
-            creditsHash.advSpec += course.credits
-        creditsHash.total += course.credits
+            creditsHash.advSpec += credits
+        creditsHash.total += credits
         @setState credits: creditsHash
 
-    removeCredits: (course) ->
-        creditsHash = @state.credits
-        if course.specialisation
-            creditsHash.spec -= course.credits
-        if course.level == "A"
-            creditsHash.adv -= course.credits
-        if course.specialisation and course.level == "A"
-            creditsHash.advSpec -= course.credits
-        creditsHash.total -= course.credits
-        @setState credits: creditsHash
-
-# Add course to planned courses
+    # Add course to planned courses
     addCourse: (course) ->
-        @addCredits(course)
+        @changeCredits(course, "add")
         index = @state.courses.indexOf course
         plannedCourse = {}
         for key of course
@@ -101,10 +90,10 @@
         @setState plannedCourses: plannedCourses
         @setState courses: courses
 
-        removeCourse: (course) ->
+    removeCourse: (course) ->
         #Remove course from 'planned courses'
         index = @state.plannedCourses.indexOf course
-        @removeCredits(course)
+        @changeCredits(course, "sub")
         plannedCourses = React.addons.update(@state.plannedCourses, { $splice: [[index, 1]] })
         course.id = course.id / 10000
 
@@ -146,5 +135,4 @@
                     React.createElement SchoolYear, plannedCourses: @state.plannedCourses, year: 5, handleChangeQuarter: @changeQuarter, handleRemoveCourse: @removeCourse
                 React.createElement CourseList, courses: courses, specialisations: @state.specialisations, handleAddCourse: @addCourse, handleAdvancedSwitch: @advancedSwitch, handleSelectSpec: @selectSpec, handleQuarterSelect: @selectQuarters, handleSearch: @search
                 React.createElement CreditsBox, credits: @state.credits
-
             React.createElement Alert, handleDismissAlert: @dismissAlert if @state.showAlert
