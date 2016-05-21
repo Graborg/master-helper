@@ -1,0 +1,1 @@
+LocalStorageMixin = require('react-localstorage')
