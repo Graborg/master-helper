@@ -146,9 +146,9 @@
                     React.DOM.th null, 'LP2'
                     React.DOM.th null, 'LP3'
                     React.DOM.th null, 'LP4',
-                React.createElement SchoolYear, localStorageKey: 4, plannedCourses: @state.plannedCourses, year: 4, handleChangeQuarter: @changeQuarter, handleRemoveCourse: @removeCourse
-                React.createElement SchoolYear, localStorageKey: 5, plannedCourses: @state.plannedCourses, year: 5, handleChangeQuarter: @changeQuarter, handleRemoveCourse: @removeCourse
-            React.createElement CourseList, localStorageKey: 6, courses: courses, specialisations: @state.specialisations, handleAddCourse: @addCourse, handleAdvancedSwitch: @advancedSwitch, handleSelectSpec: @selectSpec, handleQuarterSelect: @selectQuarters, handleSearch: @search
-            React.createElement CreditsBox, localStorageKey: 7, credits: @state.credits
+                React.createElement SchoolYear, plannedCourses: @state.plannedCourses, year: 4, handleChangeQuarter: @changeQuarter, handleRemoveCourse: @removeCourse
+                React.createElement SchoolYear, plannedCourses: @state.plannedCourses, year: 5, handleChangeQuarter: @changeQuarter, handleRemoveCourse: @removeCourse
+            React.createElement CourseList, courses: courses, specialisations: @state.specialisations, handleAddCourse: @addCourse, handleAdvancedSwitch: @advancedSwitch, handleSelectSpec: @selectSpec, handleQuarterSelect: @selectQuarters, handleSearch: @search
+            React.createElement CreditsBox, credits: @state.credits
 
         React.createElement Alert, handleDismissAlert: @dismissAlert if @state.showAlert
