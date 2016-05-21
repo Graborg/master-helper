@@ -126,11 +126,6 @@
     plannedCourses[courseIndex] = course
     @setState plannedCourses: plannedCourses
 
-  updateCourse: (course, data) ->
-    index = @state.courses.indexOf course
-    courses = React.addons.update(@state.courses, { $splice: [[index, 1, data]] })
-    @replaceState courses: courses
-
   render: ->
     courses = @filterCoursesp()
     React.DOM.div
