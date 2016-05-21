@@ -2,6 +2,10 @@
 @PlannedCourses = React.createClass
     displayName: "main_component"
     mixins: [LocalStorageMixin]
+
+    getStateFilterKeys: ->
+        return ['plannedCourses', 'courses', 'credits', 'main']
+
     getInitialState: ->
         courses: @props.courses
         plannedCourses: [{course_code: 1, credits: 30, course_name: "Master Thesis", course_length: 2, quarters:"12", available_quarters: "123", selectedQuarter:"3", selectedYear: 5, notClosable: true}]
@@ -13,12 +17,7 @@
         showAlert: false
 
     getDefaultProps: ->
-        courses: []
-        plannedCourses: [{course_code: 1, credits: 30, course_name: "Master Thesis", course_length: 2, quarters:"12", available_quarters: "123", selectedQuarter:"3", selectedYear: 5, notClosable: true}]
-        credits: {spec: 0, adv: 30, advSpec: 0, total: 30}
-        quarters: [false, false, false, false]
-        specialisations: []
-        specialisation: "All"
+        localStorageKey: 'main'
 
     filterCoursesp: ->
         for course in @state.courses
@@ -90,16 +89,15 @@
         @setState plannedCourses: plannedCourses
         @setState courses: courses
 
+    #Remove course from 'planned courses'
     removeCourse: (course) ->
-        #Remove course from 'planned courses'
-        index = @state.plannedCourses.indexOf course
         @changeCredits(course, "sub")
+        index = @state.plannedCourses.indexOf course
         plannedCourses = React.addons.update(@state.plannedCourses, { $splice: [[index, 1]] })
         course.id = course.id / 10000
 
         # This needs to be added at the right index
         courses = React.addons.update(@state.courses, { $splice: [[course.index, 1, course]] })
-        # new_courses = React.addons.update(@state.courses, { $push: [course] })
         @setState plannedCourses: plannedCourses
         @setState courses: courses
 
@@ -113,7 +111,7 @@
             newYear = if course.selectedYear == 5 then 4 else 5
             course.selectedYear = newYear
         course.selectedQuarter = course.available_quarters[newQuarterIndex]
-        plannedCourses[courseIndex] = course
+        # plannedCourses[courseIndex] = course
         @setState plannedCourses: plannedCourses
 
     render: ->
