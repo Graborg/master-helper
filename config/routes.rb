@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'testdragndrop/index'
+
   resources :courses
 
   resources :records

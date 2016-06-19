@@ -1,10 +1,12 @@
 {
   "name": "something",
-  "dependencies" : {
+  "dependencies": {
     "browserify": "~10.2.4",
     "browserify-incremental": "^3.0.1",
     "coffeeify": "~0.6",
-    "react-localstorage":"~0.3.0"
+    "react-localstorage":"~0.3.0",
+    "reactify": "^1.1.1",
+    "react": "^15.1.0"
   },
   "license": "MIT",
   "engines": {
