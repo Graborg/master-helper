@@ -5,7 +5,7 @@ ReactDnD = require('react-dnd');
 var app = window.app = global.app = {};
 
 // Component::Manifest
-var Board = require('./components/testdragndrop/board.js');
+var Board = require('./components/testdragndrop/board.coffee');
 
 // Include into app namespace
 app.Board = Board;

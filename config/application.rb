@@ -20,8 +20,8 @@ module MasterHelper
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    # Do not swallow errors in after_commit/after_rollback callbacks.
-    config.browserify_rails.commandline_options = "--transform reactify --extension=\".jsx\""
+    # Do not swallow errors in after_commit/after_rollback callbacks.ss
+    config.browserify_rails.commandline_options = "-t coffee-reactify"
     config.active_record.raise_in_transactional_callbacks = true
     config.react.addons = true
   end
