@@ -6,7 +6,13 @@ Functionality
 If course is not available that year, Mark it with 'not available' and go to link 'prev-year' get the previous years quarters.
 
 
+
 Quarters have been removed, instead there should only exist course length
 avail quarters and selected quarters
 
 Course can only strech two courses (hardcoded in school year)
+
+
+Remove border on green active.
+Change color from green to something better
+make default color for selected courses same as for the active ones?

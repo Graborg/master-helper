@@ -18,7 +18,6 @@
         specialisation: "All"
         showAlert: false
         currentDragItem: null
-        dragItems: [{ type: 'green' }, { type: 'green' }, { type: 'green' }]
 
 
     getDefaultProps: ->
@@ -122,12 +121,21 @@
     render: ->
         courses = @filterCoursesp()
         React.DOM.div
-                className: "dnd-example #{'dragging' if @state.currentDragItem}"
-                children: [
-                    React.createElement SourceObjects, onDragStart: @onDragStart, onDragStop: @onDragStop, objects: @state.dragItems
-                    React.createElement DropTargets, currentDragItem: @state.currentDragItem, onDrop: @onDrop
-                    @dropDescription()
-                ]
+            className: 'row'
+            React.DOM.table
+                className: 'well table'
+                React.DOM.thead null,
+                  React.DOM.tr null,
+                    React.DOM.th id: 'year-col'
+                    React.DOM.th null, 'LP1'
+                    React.DOM.th null, 'LP2'
+                    React.DOM.th null, 'LP3'
+                    React.DOM.th null, 'LP4',
+                React.createElement SchoolYear, plannedCourses: @state.plannedCourses, year: 4, handleChangeQuarter: @changeQuarter, handleRemoveCourse: @removeCourse, currentDragItem: @state.currentDragItem, onDrop: @onDrop, onDragStart: @onDragStart, onDragStop: @onDragStop
+                React.createElement SchoolYear, plannedCourses: @state.plannedCourses, year: 5, handleChangeQuarter: @changeQuarter, handleRemoveCourse: @removeCourse, currentDragItem: @state.currentDragItem, onDrop: @onDrop, onDragStart: @onDragStart, onDragStop: @onDragStop
+            React.createElement CourseList, courses: courses, specialisations: @state.specialisations, handleAddCourse: @addCourse, handleAdvancedSwitch: @advancedSwitch, handleSelectSpec: @selectSpec, handleQuarterSelect: @selectQuarters, handleSearch: @search
+            React.createElement CreditsBox, credits: @state.credits
+            React.createElement Alert, handleDismissAlert: @dismissAlert if @state.showAlert
 
     onDragStart: (details) ->
         @setState currentDragItem: details
@@ -136,31 +144,10 @@
         @setState currentDragItem: null
 
     onDrop: (target) ->
-        console.log target
-        @setState lastDrop:
-            source: @state.currentDragItem
-            target: target
-
-    dropDescription: ->
-        if drop = @state.lastDrop
-            React.DOM.p
-                className: 'drop-description'
-                children: "Dropped source #{drop.source.type}-#{drop.source.index}
-                              on target #{drop.target.index}"
-            # className: 'well'
-            # React.DOM.div
-            #     className: 'row'
-            #     React.DOM.table
-            #         className: 'well table'
-            #         React.DOM.thead null,
-            #           React.DOM.tr null,
-            #             React.DOM.th id: 'year-col'
-            #             React.DOM.th null, 'LP1'
-            #             React.DOM.th null, 'LP2'
-            #             React.DOM.th null, 'LP3'
-            #             React.DOM.th null, 'LP4',
-            #         React.createElement SchoolYear, plannedCourses: @state.plannedCourses, year: 4, handleChangeQuarter: @changeQuarter, handleRemoveCourse: @removeCourse
-            #         React.createElement SchoolYear, plannedCourses: @state.plannedCourses, year: 5, handleChangeQuarter: @changeQuarter, handleRemoveCourse: @removeCourse
-            #     React.createElement CourseList, courses: courses, specialisations: @state.specialisations, handleAddCourse: @addCourse, handleAdvancedSwitch: @advancedSwitch, handleSelectSpec: @selectSpec, handleQuarterSelect: @selectQuarters, handleSearch: @search
-            #     React.createElement CreditsBox, credits: @state.credits
-            # React.createElement Alert, handleDismissAlert: @dismissAlert if @state.showAlert
+        course = @state.currentDragItem.course
+        courseIndex = @state.plannedCourses.indexOf course
+        course.selectedQuarter = target.quarter.toString()
+        course.selectedYear = target.year
+        plannedCourses = @state.plannedCourses
+        plannedCourses[courseIndex] = course
+        # @setState plannedCourses: plannedCourses
