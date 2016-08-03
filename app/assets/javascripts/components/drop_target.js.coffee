@@ -3,31 +3,31 @@
     hover: false
 
   render: ->
-    React.DOM.div
-      className: @classes()
-      children: 'accepts ' + @acceptsDescription()
-      onMouseUp: @onDrop
-      onMouseEnter: => @setState hover: true
-      onMouseLeave: => @setState hover: false
+    React.DOM.td
+        className: @classes()
+        children: 'accepts ' + @acceptsDescription()
+        onMouseUp: @onDrop
+        onMouseEnter: => @setState hover: true
+        onMouseLeave: => @setState hover: false
+        ""
 
   classes: ->
     [
       'dnd-drop-target'
       "#{@props.target.accepts.join ' '}"
       'active' if @active()
-      'active-green' if @active() and @props.currentDragItem.type == 'green'
-      'active-blue' if @active() and @props.currentDragItem.type == 'blue'
+      'active-green' if @active() # and @props.currentDragItem.available_quarters == 'green'
       'disabled' if @disabled()
       'hover' if @state.hover
     ].join ' '
 
   active: ->
     item = @props.currentDragItem
-    hej = item and item.type in @props.target.accepts
+    item and @props.target.accepts[0] in item.available_quarters.toString().split("")
 
   disabled: ->
     item = @props.currentDragItem
-    item and item.type not in @props.target.accepts
+    item and @props.target.accepts[0] not in item.available_quarters.toString().split("")
 
   acceptsDescription: ->
     if @props.target.accepts.length > 0
@@ -36,8 +36,5 @@
       'nothing'
 
   onDrop: ->
-    console.log @props.currentDragItem
-    console.log @props.target.accepts
     if @active()
-      console.log "nkro"
-      @props.onDrop? index: @props.index + 1
+      @props.onDrop? quarter: @props.quarterNo, year: @props.year

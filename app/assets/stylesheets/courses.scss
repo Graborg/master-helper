@@ -113,17 +113,11 @@ body {
 .dnd-drop-target.active.hover:after, .dnd-drop-target.active.hover:before {
   display: none;
 }
-.dnd-drop-target.active-green.active {
-  box-shadow: 0 0 0 3px #948F8F, 0 0 0 4px #B0DE6B;
+.dnd-drop-target.active {
+	background: rgba(1, 123, 176, 0.56) !important;
 }
-.dnd-drop-target.active-green.active.hover {
-  background: #B0DE6B;
-}
-.dnd-drop-target.active-blue.active {
-  box-shadow: 0 0 0 3px #948F8F, 0 0 0 4px #76C9DE;
-}
-.dnd-drop-target.active-blue.active.hover {
-  background: #76C9DE;
+.dnd-drop-target.active.hover {
+  background: #017BB0 !important;
 }
 .dnd-drop-target.disabled {
   opacity: 0.2;
@@ -131,7 +125,7 @@ body {
 }
 
 .dnd-draggable.dragging {
-  z-index: 1;
+  z-index: 5 !important;
   pointer-events: none;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
 }
