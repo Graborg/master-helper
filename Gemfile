@@ -34,6 +34,7 @@ gem 'nokogiri', '~> 1.6.6.2'
 gem 'react-bootstrap-rails'
 gem "browserify-rails"
 gem 'coffee-react'
+gem 'puma'
 
 
 # Use Unicorn as the app server
