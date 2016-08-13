@@ -2,7 +2,8 @@ table {
 	table-layout: fixed;
 }
 div.well{
-	padding-right: 7px !important;
+	height: 100%;
+	// padding-right: 7px !important;
 }
 tr{
 	text-align: left;
@@ -12,13 +13,13 @@ span.glyphicon-plus-sign {
 	cursor: pointer ;
 	color:#009688;
 }
+
+.PlannedCourses{
+	height: 100%;
+}
 .course-list {
 	margin-left: 0px !important;
 	padding: 0px 15px 0px 0px !important;
-}
-.credits-box{
-	padding: 0px !important;
-	margin: 0px !important;
 }
 .panel-heading{
 	text-align: left;
