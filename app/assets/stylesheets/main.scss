@@ -1,9 +1,19 @@
+html, body{
+	min-height: 100% !important;
+	display: flex;
+	background: #ddd;
+	// background: #036894;
+}
 table {
 	table-layout: fixed;
 }
 div.well{
 	height: 100%;
-	// padding-right: 7px !important;
+}
+.main.well{
+	display:inherit;
+	// background: #036894;
+	background: #ddd;
 }
 tr{
 	text-align: left;

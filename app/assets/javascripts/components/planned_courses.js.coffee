@@ -121,7 +121,7 @@
     render: ->
         courses = @filterCoursesp()
         React.DOM.div
-            className: 'well'
+            className: 'main well'
             React.DOM.table
                 className: 'well table'
                 React.DOM.thead null,
