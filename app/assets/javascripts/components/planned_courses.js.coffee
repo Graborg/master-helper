@@ -1,6 +1,3 @@
-# document.addEventListener 'DOMContentLoaded', ->
-#   React.renderComponent PlannedCourses(), document.body
-
 @PlannedCourses = React.createClass
     displayName: "main_component"
     mixins: [LocalStorageMixin]
@@ -48,7 +45,6 @@
 
     selectQuarters: (quarter) ->
         enabled = @state.quarters[quarter-1]
-        # quarters = React.addons.update(@state.quarters, {"#{quarter}": {$set: !@state.quarters[quarter] }});
         quarters = React.addons.update(@state.quarters, { $splice: [[quarter-1, 1, !enabled]] })
         @setState quarters: quarters
 

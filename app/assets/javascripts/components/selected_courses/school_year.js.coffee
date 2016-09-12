@@ -16,11 +16,11 @@
         loop
             occupied = false
             temp = []
+            # Loop through all quarters and pop one element for each quarter
             for quarterNo in [1..4]
-                # Loop through all quarters and pop one element for each quarter
                 course = courses[quarterNo].shift()
-                # Items can only strech 2 quarters
                 if course
+                    # If the space is occupied, put it back and move on
                     if occupied
                         courses[quarterNo].unshift(course)
                         occupied = false
@@ -33,8 +33,8 @@
                               React.createElement SelectedCourse, key: i-5000, course: course, handleChangeQuarter: @props.handleChangeQuarter, handleRemoveCourse: @props.handleRemoveCourse, onDragStart: @props.onDragStart, onDragStop: @props.onDragStop, dragData: @dragData
                         )
                         i += 1
+                # Nothing left in that quarter to push, push an empy td to fill out the space
                 else
-                    # Push an empy td to fill out the space
                     temp.push(@createEmptytd(i, quarterNo, rows, targets[quarterNo - 1])) if not occupied
                     occupied = false
                     # If the row is filled, we switch row

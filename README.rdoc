@@ -1,18 +1,18 @@
-TODO
+Project is under development.
 
-change \begin{description} to \paragraph eller subparagraph (titles too long)
+TODO:
+
 Functionality
 
-If course is not available that year, Mark it with 'not available' and go to link 'prev-year' get the previous years quarters.
+* Handle courses that are only given certain years
+    If course is not available that year, Mark it with 'not available' and go to link 'prev-year' get the previous years quarters.
 
+* Implement search function
 
+* Should be able to drop course on occupied quarter, add an extra row?
 
+Misc:
+
+Clean css files
 Quarters have been removed, instead there should only exist course length
-avail quarters and selected quarters
-
-Course can only strech two courses (hardcoded in school year)
-
-
-Remove border on green active.
-Change color from green to something better
-make default color for selected courses same as for the active ones?
+Course can only strech two courses (as defined in in school_year.js)
