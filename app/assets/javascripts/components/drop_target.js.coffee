@@ -14,24 +14,30 @@
   classes: ->
     [
       'dnd-drop-target'
-      "#{@props.target.accepts.join ' '}"
+      "#{@props.target.quarter}"
       'active' if @active()
-      'active-green' if @active() # and @props.currentDragItem.available_quarters == 'green'
       'disabled' if @disabled()
       'hover' if @state.hover
     ].join ' '
 
   active: ->
     item = @props.currentDragItem
-    item and @props.target.accepts[0] in item.available_quarters.toString().split("")
+    if item
+        target = @props.target
+        draggedCourse = item.course
+        
+        rightQuarter = target.quarter in draggedCourse.available_quarters.toString().split("")
+        currentSlot = draggedCourse.selectedQuarter == target.quarter and draggedCourse.selectedYear == target.year
+        
+        return rightQuarter and not currentSlot
 
   disabled: ->
     item = @props.currentDragItem
-    item and @props.target.accepts[0] not in item.available_quarters.toString().split("")
+    item and @props.target.quarter not in item.course.available_quarters.toString().split("")
 
   acceptsDescription: ->
-    if @props.target.accepts.length > 0
-      @props.target.accepts.join ' & '
+    if @props.target.quarter.length > 0
+      @props.target.quarter + ' & '
     else
       'nothing'
 

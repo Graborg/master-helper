@@ -11,7 +11,6 @@ DRAG_THRESHOLD = 3 # pixels
     changeQuarter: ->
         @props.handleChangeQuarter @props.course
     dragData: ->
-        available_quarters: @props.course.available_quarters
         course: @props.course
     style: ->
         if @state.dragging

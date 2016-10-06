@@ -8,10 +8,10 @@
         rows = 0
         targets =
         [
-          { accepts: ['1'] }
-          { accepts: ['2'] }
-          { accepts: ['3'] }
-          { accepts: ['4'] }
+          { quarter: '1', year: @props.year }
+          { quarter: '2', year: @props.year }
+          { quarter: '3', year: @props.year }
+          { quarter: '4', year: @props.year }
         ]
 
         loop
@@ -37,6 +37,8 @@
                 # Nothing left in that quarter to push, push an empy td to fill out the space
                 else
                     temp.push(@createEmptytd(i, quarterNo, rows, targets[quarterNo - 1])) if not occupied
+                    # Set quarter to "" in that quarter to only include one droptarget per year/quarter
+                    targets[quarterNo - 1] = {quarter: ""} if not occupied
                     occupied = false
                     # If the row is filled, we switch row
                 if quarterNo == 4
@@ -51,6 +53,7 @@
         return insert_elements
 
     createEmptytd: (i, quarterNo, rows, target) ->
+        # Only make the top most row in that quarter a droptarget
         React.createElement DropTarget, key: i + quarterNo + rows + 5000, currentDragItem: @props.currentDragItem, onDrop: @props.onDrop, target: target, quarterNo: quarterNo, year: @props.year
 
 
