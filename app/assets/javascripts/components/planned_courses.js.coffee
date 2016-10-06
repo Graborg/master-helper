@@ -111,7 +111,6 @@
             newYear = if course.selectedYear == 5 then 4 else 5
             course.selectedYear = newYear
         course.selectedQuarter = course.available_quarters[newQuarterIndex]
-        # plannedCourses[courseIndex] = course
         @setState plannedCourses: plannedCourses
 
     render: ->
