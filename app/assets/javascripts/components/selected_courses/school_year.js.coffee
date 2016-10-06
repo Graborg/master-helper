@@ -1,5 +1,6 @@
 @SchoolYear = React.createClass
     displayName: "school_year"
+    
     # Return elements in DOM-order
     dom_elements: (courses, courseCounter) ->
         insert_elements = []
@@ -42,7 +43,11 @@
                   rows += 1
                   insert_elements.push(React.DOM.tr key: i + rows, temp)
             break if i >= courseCounter
-        insert_elements.unshift(React.DOM.tr key: rows + i + @props.year , React.DOM.td rowSpan:rows+1, @props.year)
+        # Insert empty row after content (mainlhy for drag and drop purposes)
+        empty_row = []
+        empty_row.push(@createEmptytd(i, quarterNo, rows, targets[quarterNo - 1])) for quarterNo in [1..4]
+        insert_elements.push(React.DOM.tr key: 500*50, empty_row)
+        insert_elements.unshift(React.DOM.tr key: rows + i + @props.year , React.DOM.td rowSpan:rows+2, @props.year)
         return insert_elements
 
     createEmptytd: (i, quarterNo, rows, target) ->
