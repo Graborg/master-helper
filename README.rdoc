@@ -16,3 +16,4 @@ Misc:
 Clean css files
 Quarters have been removed, instead there should only exist course length
 Course can only strech two courses (as defined in in school_year.js)
+
